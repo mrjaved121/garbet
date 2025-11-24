@@ -25,6 +25,37 @@ const userSchema = new mongoose.Schema(
       minlength: 6,
       select: false,
     },
+    balance: {
+      type: Number,
+      default: 0,
+      min: 0,
+    },
+    currency: {
+      type: String,
+      default: 'USD',
+      enum: ['USD', 'EUR', 'TRY'],
+    },
+    status: {
+      type: String,
+      enum: ['active', 'suspended', 'banned'],
+      default: 'active',
+    },
+    isVerified: {
+      type: Boolean,
+      default: false,
+    },
+    totalDeposits: {
+      type: Number,
+      default: 0,
+    },
+    totalWithdrawals: {
+      type: Number,
+      default: 0,
+    },
+    totalWinnings: {
+      type: Number,
+      default: 0,
+    },
   },
   {
     timestamps: true,

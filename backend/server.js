@@ -1,10 +1,13 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const connectDB = require('./config/database');
 
 // Load environment variables
 dotenv.config();
+
+// Connect to database
+connectDB();
 
 const app = express();
 
@@ -16,24 +19,18 @@ app.use(express.urlencoded({ extended: true }));
 // Routes
 app.use('/api/auth', require('./routes/auth.routes'));
 app.use('/api/users', require('./routes/user.routes'));
+app.use('/api/transactions', require('./routes/transaction.routes'));
+app.use('/api/games', require('./routes/game.routes'));
 
 // Health check route
 app.get('/api/health', (req, res) => {
-  res.json({ message: 'Server is running!', status: 'OK' });
-});
-
-// MongoDB connection
-mongoose
-  .connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/garbet', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log('MongoDB connected successfully');
-  })
-  .catch((err) => {
-    console.error('MongoDB connection error:', err);
+  res.json({ 
+    message: 'Server is running!', 
+    status: 'OK',
+    database: 'Connected',
+    timestamp: new Date().toISOString()
   });
+});
 
 // Error handling middleware
 app.use((err, req, res, next) => {
