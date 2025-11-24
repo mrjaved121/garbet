@@ -1,25 +1,29 @@
 {
-  "name": "garbet-client",
-  "version": "0.1.0",
-  "private": true,
+  "name": "garbet-mern-app",
+  "version": "1.0.0",
+  "description": "MERN Stack application with Next.js frontend",
+  "main": "index.js",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "backend": "cd backend && npm run dev",
+    "frontend": "cd frontend && npm run dev",
+    "install-backend": "cd backend && npm install",
+    "install-frontend": "cd frontend && npm install",
+    "install-all": "npm run install-backend && npm run install-frontend",
+    "build": "cd frontend && npm run build",
+    "start": "cd backend && npm start"
   },
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "next": "14.0.4",
-    "axios": "^1.6.2"
-  },
+  "keywords": [
+    "mern",
+    "nextjs",
+    "react",
+    "express",
+    "mongodb"
+  ],
+  "author": "",
+  "license": "ISC",
   "devDependencies": {
-    "eslint": "^8.55.0",
-    "eslint-config-next": "14.0.4",
-    "tailwindcss": "^3.3.6",
-    "postcss": "^8.4.32",
-    "autoprefixer": "^10.4.16"
+    "concurrently": "^8.2.2"
   }
 }
 

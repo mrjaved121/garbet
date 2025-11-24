@@ -1,0 +1,251 @@
+'use client'
+
+import { useState } from 'react'
+import Link from 'next/link'
+
+export default function LiveBettingPage() {
+  const [selectedBets, setSelectedBets] = useState([
+    { match: 'Galatasaray vs Fenerbahçe', type: 'Maç Sonucu', selection: '1', odds: 1.85 },
+    { match: 'Man City vs Arsenal', type: 'Maç Sonucu', selection: 'X', odds: 4.00 }
+  ])
+  const [stake, setStake] = useState('10.00')
+  const [timeFilter, setTimeFilter] = useState('Live Now')
+
+  const totalOdds = selectedBets.reduce((acc, bet) => acc * bet.odds, 1).toFixed(2)
+  const maxWinnings = (parseFloat(stake) * parseFloat(totalOdds)).toFixed(2)
+
+  const removeBet = (index) => {
+    setSelectedBets(selectedBets.filter((_, i) => i !== index))
+  }
+
+  const matches = [
+    {
+      league: 'Süper Lig',
+      games: [
+        {
+          id: 'match1',
+          time: "68'",
+          teams: 'Galatasaray vs Fenerbahçe',
+          score: '2 - 1',
+          odds: { '1': 1.85, 'X': 3.50, '2': 4.20 }
+        },
+        {
+          id: 'match2',
+          time: 'HT',
+          teams: 'Beşiktaş vs Trabzonspor',
+          score: '0 - 0',
+          odds: { '1': 2.10, 'X': 3.20, '2': 3.80 }
+        }
+      ]
+    },
+    {
+      league: 'Premier League',
+      games: [
+        {
+          id: 'match3',
+          time: "75'",
+          teams: 'Manchester City vs Arsenal',
+          score: '1 - 1',
+          odds: { '1': 1.50, 'X': 4.00, '2': 6.50 }
+        }
+      ]
+    }
+  ]
+
+  return (
+    <div className="relative min-h-screen w-full bg-background-dark">
+      {/* TopNavBar */}
+      <header className="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-surface/80 bg-background-dark/80 px-4 py-3 backdrop-blur-sm lg:px-10">
+        <div className="flex items-center gap-4">
+          <div className="size-6 text-primary">
+            <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+              <g clipPath="url(#clip0_6_330)">
+                <path clipRule="evenodd" d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z" fill="currentColor" fillRule="evenodd"></path>
+              </g>
+              <defs><clipPath id="clip0_6_330"><rect fill="white" height="48" width="48"></rect></clipPath></defs>
+            </svg>
+          </div>
+          <Link href="/">
+            <h2 className="text-xl font-bold leading-tight tracking-[-0.015em] text-primary-text">BetPlatform</h2>
+          </Link>
+        </div>
+        <nav className="hidden items-center gap-9 lg:flex">
+          <Link href="/sports" className="text-sm font-medium text-secondary-text transition-colors hover:text-primary-text">Spor</Link>
+          <Link href="/live-betting" className="text-sm font-medium text-primary transition-colors hover:text-primary-text">Canlı Bahis</Link>
+          <Link href="/slots" className="text-sm font-medium text-secondary-text transition-colors hover:text-primary-text">Casino</Link>
+          <Link href="/live-casino" className="text-sm font-medium text-secondary-text transition-colors hover:text-primary-text">Canlı Casino</Link>
+          <Link href="/promotions" className="text-sm font-medium text-secondary-text transition-colors hover:text-primary-text">Promosyonlar</Link>
+        </nav>
+        <div className="flex items-center gap-2">
+          <Link href="/auth/register" className="hidden min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-background-dark text-sm font-bold leading-normal tracking-[0.015em] transition-opacity hover:opacity-90 sm:flex">
+            <span className="truncate">Kayıt Ol</span>
+          </Link>
+          <Link href="/auth/login" className="hidden min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-surface text-primary-text text-sm font-bold leading-normal tracking-[0.015em] transition-colors hover:bg-surface/80 sm:flex">
+            <span className="truncate">Giriş Yap</span>
+          </Link>
+          <button className="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-surface text-primary-text transition-colors hover:bg-surface/80">
+            <span className="material-symbols-outlined text-xl">language</span>
+          </button>
+          <div className="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuCh6zslojYoxVh20no0WQg4DjXxcrH_bNPcyH4ijdCo013BS4e96ggG1FRiVZJ0vJAxFb0Uow4DJWIwSg7qexHnwaLhzs3rFD1Hn8WLHU4A5tI8XtGXxz4WqY9DdayW-apPcS0sz_075awkp_YDpI_qMhrhuFMg1TU6P9EPxNAuJpA2VY43d9hTikQvVZ29tlT-h2fj4RLjkMB_zX1Jt2gxOlNEOfTl_s1D_bLi2nq88hABJp4ndNVjW6js9lfm2Q6KT1eqXQWIgm0")' }}></div>
+        </div>
+      </header>
+
+      <main className="mx-auto flex w-full max-w-7xl flex-col gap-4 p-4 lg:flex-row lg:gap-8 lg:p-6">
+        {/* Main Content */}
+        <div className="w-full flex-1">
+          {/* Filter Bar */}
+          <div className="flex flex-col gap-4 rounded-lg bg-surface p-3 shadow-soft sm:flex-row sm:items-center">
+            {/* Chips / Sport Type */}
+            <div className="flex flex-1 gap-2 overflow-x-auto pb-2 sm:pb-0">
+              <button className="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-background-dark pl-3 pr-4 shadow-md">
+                <span className="material-symbols-outlined text-lg text-primary">sports_soccer</span>
+                <p className="text-sm font-medium text-primary-text">Futbol</p>
+              </button>
+              <button className="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-surface/80 pl-3 pr-4 transition-colors hover:bg-surface">
+                <span className="material-symbols-outlined text-lg text-secondary-text">sports_basketball</span>
+                <p className="text-sm font-medium text-secondary-text">Basketbol</p>
+              </button>
+              <button className="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-surface/80 pl-3 pr-4 transition-colors hover:bg-surface">
+                <span className="material-symbols-outlined text-lg text-secondary-text">sports_tennis</span>
+                <p className="text-sm font-medium text-secondary-text">Tenis</p>
+              </button>
+              <button className="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-surface/80 pl-3 pr-4 transition-colors hover:bg-surface">
+                <span className="material-symbols-outlined text-lg text-secondary-text">sports_volleyball</span>
+                <p className="text-sm font-medium text-secondary-text">Voleybol</p>
+              </button>
+            </div>
+            {/* SegmentedButtons */}
+            <div className="flex h-10 flex-shrink-0 items-center justify-center rounded-lg bg-background-dark p-1 sm:w-auto sm:min-w-[280px]">
+              <label className="flex h-full flex-1 cursor-pointer items-center justify-center overflow-hidden rounded-md px-3 text-sm font-medium leading-normal text-secondary-text has-[:checked]:bg-surface has-[:checked]:text-primary-text">
+                <span className="truncate">Canlı</span>
+                <input checked={timeFilter === 'Live Now'} onChange={() => setTimeFilter('Live Now')} className="invisible w-0" name="time-filter" type="radio" value="Live Now"/>
+              </label>
+              <label className="flex h-full flex-1 cursor-pointer items-center justify-center overflow-hidden rounded-md px-3 text-sm font-medium leading-normal text-secondary-text has-[:checked]:bg-surface has-[:checked]:text-primary-text">
+                <span className="truncate">Bugün</span>
+                <input checked={timeFilter === 'Today'} onChange={() => setTimeFilter('Today')} className="invisible w-0" name="time-filter" type="radio" value="Today"/>
+              </label>
+              <label className="flex h-full flex-1 cursor-pointer items-center justify-center overflow-hidden rounded-md px-3 text-sm font-medium leading-normal text-secondary-text has-[:checked]:bg-surface has-[:checked]:text-primary-text">
+                <span className="truncate">Yakında</span>
+                <input checked={timeFilter === 'Upcoming'} onChange={() => setTimeFilter('Upcoming')} className="invisible w-0" name="time-filter" type="radio" value="Upcoming"/>
+              </label>
+            </div>
+          </div>
+
+          {/* Match List */}
+          <div className="mt-6 flex flex-col gap-4">
+            {/* SectionHeader */}
+            <h2 className="text-2xl font-bold leading-tight tracking-[-0.015em] text-primary-text px-2">Canlı Futbol</h2>
+
+            {matches.map((league, leagueIndex) => (
+              <div key={leagueIndex} className={`flex flex-col gap-2 ${leagueIndex > 0 ? 'mt-4' : ''}`}>
+                <h3 className="text-sm font-semibold text-secondary-text px-2">{league.league}</h3>
+                {league.games.map((match) => (
+                  <div key={match.id} className="flex flex-col gap-3 rounded-lg bg-surface p-4 shadow-soft">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <span className="text-sm font-medium text-primary">{match.time}</span>
+                        <p className="text-base font-medium text-primary-text">{match.teams}</p>
+                      </div>
+                      <span className="text-lg font-bold text-primary-text">{match.score}</span>
+                    </div>
+                    <div className="grid grid-cols-3 gap-2">
+                      {['1', 'X', '2'].map((option) => (
+                        <button
+                          key={option}
+                          className="group flex flex-col items-center justify-center rounded-lg bg-background-dark/50 py-2 transition-colors hover:bg-background-dark/80"
+                        >
+                          <span className="text-xs text-secondary-text">{option}</span>
+                          <span className="font-bold text-primary-text">{match.odds[option]}</span>
+                          <input className="hidden" name={`${match.id}-bet`} type="radio"/>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* BetSlip - Desktop */}
+        <aside className="sticky top-24 hidden h-fit w-full max-w-xs flex-col gap-4 lg:flex">
+          <div className="rounded-lg bg-surface p-4 shadow-soft">
+            <h3 className="mb-4 text-lg font-bold text-primary-text">Bahis Kuponu</h3>
+
+            {selectedBets.length === 0 ? (
+              <div className="flex flex-col items-center justify-center py-10">
+                <span className="material-symbols-outlined text-4xl text-secondary-text">receipt_long</span>
+                <p className="mt-2 text-sm text-secondary-text">Seçimleriniz burada görünecek.</p>
+              </div>
+            ) : (
+              <div className="flex flex-col gap-3">
+                {selectedBets.map((bet, index) => (
+                  <div key={index} className="rounded-lg bg-background-dark p-3">
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <p className="text-sm font-medium text-primary-text">{bet.match}</p>
+                        <p className="text-xs text-secondary-text">{bet.type}</p>
+                      </div>
+                      <button onClick={() => removeBet(index)} className="text-secondary-text hover:text-primary-text">
+                        <span className="material-symbols-outlined text-base">close</span>
+                      </button>
+                    </div>
+                    <div className="mt-2 flex items-center justify-between">
+                      <p className="text-sm font-bold text-primary">Seçim: {bet.selection}</p>
+                      <p className="text-sm font-bold text-primary-text">@{bet.odds}</p>
+                    </div>
+                  </div>
+                ))}
+
+                {/* Total Odds and Stake */}
+                <div className="mt-2 border-t border-background-dark pt-3">
+                  <div className="flex justify-between text-sm font-medium text-secondary-text">
+                    <span>Toplam Oran</span>
+                    <span className="text-primary-text">{totalOdds}</span>
+                  </div>
+                  <div className="mt-3">
+                    <label className="mb-1 block text-sm font-medium text-secondary-text" htmlFor="stake-desktop">Miktar</label>
+                    <div className="relative">
+                      <input
+                        className="w-full rounded-lg border-none bg-background-dark py-2 pl-3 pr-12 text-primary-text focus:ring-2 focus:ring-primary"
+                        id="stake-desktop"
+                        type="text"
+                        value={stake}
+                        onChange={(e) => setStake(e.target.value)}
+                      />
+                      <span className="absolute inset-y-0 right-3 flex items-center text-sm font-bold text-secondary-text">TRY</span>
+                    </div>
+                  </div>
+                  <div className="mt-3 flex justify-between text-sm font-medium text-secondary-text">
+                    <span>Maksimum Kazanç</span>
+                    <span className="text-lg font-bold text-primary">{maxWinnings} TRY</span>
+                  </div>
+                </div>
+
+                {/* CTA */}
+                <button className="mt-4 flex h-12 w-full items-center justify-center rounded-lg bg-primary text-base font-bold text-background-dark shadow-soft transition-opacity hover:opacity-90">
+                  Bahis Yap
+                </button>
+              </div>
+            )}
+          </div>
+        </aside>
+      </main>
+
+      {/* BetSlip Trigger - Mobile */}
+      <div className="sticky bottom-0 z-40 block bg-gradient-to-t from-background-dark to-transparent px-4 pb-4 pt-8 lg:hidden">
+        <button className="flex h-14 w-full items-center justify-between rounded-lg bg-primary px-4 text-background-dark shadow-soft">
+          <div className="flex items-center gap-3">
+            <span className="material-symbols-outlined font-semibold">receipt_long</span>
+            <span className="text-base font-bold">Kuponu Görüntüle ({selectedBets.length})</span>
+          </div>
+          <div className="flex flex-col items-end">
+            <span className="text-xs">Toplam Oran</span>
+            <span className="text-base font-bold">{totalOdds}</span>
+          </div>
+        </button>
+      </div>
+    </div>
+  )
+}
+
