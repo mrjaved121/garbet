@@ -53,7 +53,14 @@
     "creditCard": "Credit Card",
     "crypto": "Cryptocurrency",
     "min": "Min",
-    "max": "Max"
+    "max": "Max",
+    "depositButton": "DEPOSIT",
+    "bonusesButton": "BONUSES",
+    "messagesButton": "MESSAGES",
+    "crash": "CRASH",
+    "tvGames": "TV GAMES",
+    "tournaments": "TOURNAMENTS",
+    "more": "MORE"
   },
   "home": {
     "superPartnership": "SUPER PARTNERSHIP",
@@ -88,7 +95,9 @@
     "totalOdds": "Total Odds",
     "stake": "Stake",
     "maxWinnings": "Max Winnings",
-    "placeBet": "Place Bet"
+    "placeBet": "Place Bet",
+    "yourSelections": "Your selections will appear here.",
+    "selectionLabel": "Selection"
   },
   "sports": {
     "title": "Sports Betting",
@@ -117,14 +126,18 @@
     "jackpot": "Jackpot",
     "highVolatility": "High Volatility",
     "megaways": "Megaways",
-    "play": "Play"
+    "play": "Play",
+    "sportsBetting": "Sports Betting",
+    "liveCasinoNav": "Live Casino",
+    "slotsNav": "Slots"
   },
   "liveCasino": {
     "title": "Live Casino",
     "searchPlaceholder": "Search for a game...",
     "allProviders": "All Providers",
     "all": "All",
-    "playNow": "Play Now"
+    "playNow": "Play Now",
+    "live": "LIVE"
   },
   "crash": {
     "title": "Crash Games",

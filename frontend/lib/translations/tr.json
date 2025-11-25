@@ -5,14 +5,14 @@
     "withdraw": "Para Çek",
     "login": "Giriş Yap",
     "register": "Kayıt Ol",
-    "signIn": "SIGN IN",
-    "signUp": "REGISTER",
+    "signIn": "GİRİŞ YAP",
+    "signUp": "KAYIT OL",
     "home": "Ana Sayfa",
-    "promotions": "PROMOTIONS",
-    "liveBet": "LIVE BET",
-    "sports": "SPORTS",
-    "slotGames": "SLOT GAMES",
-    "liveCasino": "LIVE CASINO",
+    "promotions": "PROMOSYONLAR",
+    "liveBet": "CANLI BAHİS",
+    "sports": "SPOR",
+    "slotGames": "SLOT OYUNLARI",
+    "liveCasino": "CANLI CASINO",
     "crashGames": "CRASH OYUNLARI",
     "welcome": "Hoş geldin",
     "welcomeBack": "Tekrar hoş geldin",
@@ -53,7 +53,14 @@
     "creditCard": "Kredi Kartı",
     "crypto": "Kripto Para",
     "min": "Min",
-    "max": "Max"
+    "max": "Max",
+    "depositButton": "YATIR",
+    "bonusesButton": "BONUSLAR",
+    "messagesButton": "MESAJLAR",
+    "crash": "CRASH",
+    "tvGames": "TV OYUNLARI",
+    "tournaments": "TURNUVALAR",
+    "more": "DAHA FAZLA"
   },
   "home": {
     "superPartnership": "SÜPER ORTAKLIK",
@@ -88,7 +95,9 @@
     "totalOdds": "Toplam Oran",
     "stake": "Miktar",
     "maxWinnings": "Maksimum Kazanç",
-    "placeBet": "Bahis Yap"
+    "placeBet": "Bahis Yap",
+    "yourSelections": "Seçimleriniz burada görünecek.",
+    "selectionLabel": "Seçim"
   },
   "sports": {
     "title": "Spor Bahisleri",
@@ -117,29 +126,33 @@
     "jackpot": "Jackpot",
     "highVolatility": "Yüksek Volatilite",
     "megaways": "Megaways",
-    "play": "Oyna"
+    "play": "Oyna",
+    "sportsBetting": "Spor Bahisleri",
+    "liveCasinoNav": "Canlı Casino",
+    "slotsNav": "Slotlar"
   },
   "liveCasino": {
     "title": "Canlı Casino",
     "searchPlaceholder": "Bir oyun ara...",
     "allProviders": "Tüm Sağlayıcılar",
     "all": "Tümü",
-    "playNow": "Şimdi Oyna"
+    "playNow": "Şimdi Oyna",
+    "live": "CANLI"
   },
   "crash": {
-    "title": "Crash Games",
-    "recentResults": "Recent Results",
-    "gameInProgress": "Game in Progress",
-    "waitingForNextRound": "Waiting for next round...",
-    "betAmount": "Bet Amount (TL)",
-    "autoCashout": "Auto Cash-out",
-    "placeBet": "Place Bet",
-    "recentBets": "Recent Bets",
-    "player": "Player",
-    "bet": "Bet",
-    "multiplier": "Multiplier",
-    "profit": "Profit",
-    "crashed": "Crashed"
+    "title": "Crash Oyunları",
+    "recentResults": "Son Sonuçlar",
+    "gameInProgress": "Oyun Devam Ediyor",
+    "waitingForNextRound": "Sonraki tur bekleniyor...",
+    "betAmount": "Bahis Tutarı (TL)",
+    "autoCashout": "Otomatik Çıkış",
+    "placeBet": "Bahis Yap",
+    "recentBets": "Son Bahisler",
+    "player": "Oyuncu",
+    "bet": "Bahis",
+    "multiplier": "Çarpan",
+    "profit": "Kazanç",
+    "crashed": "Çöktü"
   },
   "promotions": {
     "title": "Promotions",

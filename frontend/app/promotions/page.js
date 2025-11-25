@@ -3,9 +3,11 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
+import { useTranslation } from '@/hooks/useTranslation'
 
 export default function PromotionsPage() {
-  const [selectedFilter, setSelectedFilter] = useState('All')
+  const { t } = useTranslation()
+  const [selectedFilter, setSelectedFilter] = useState(t('promotions.all'))
   const [currentPage, setCurrentPage] = useState(1)
 
   const promotions = [
@@ -16,7 +18,7 @@ export default function PromotionsPage() {
       image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAk_vnEsPqH--xoScRbAPF6mziTrzsq2jilF-RXlfOmulLVpzy2oKXco83kath5OnzEauZi5iOOJdVEA2z9bfxebqmFga0hrboTI3xZl8SDz_NcmWK7xsOo3PRQMbTiL0_FYWAHnFcA3E7YarC1e4iAtVr-pudu4dFAwcaNTxL-I4s7m6dhZgV4RbQP6pK_0_WUCI8ZEcbU_skLg9cBDjf2xGPDLNj99giTwEJMSGzOrLmn0XghAuu1eFG7HpQHS92UsRA1VABxwiY',
       category: 'Welcome',
       categoryColor: 'bg-blue-500/80',
-      buttonText: 'Claim',
+      buttonText: t('promotions.claim'),
       buttonStyle: 'bg-primary text-background-dark hover:bg-yellow-400',
       type: 'Sports',
       tag: 'Welcome Bonus'
@@ -28,7 +30,7 @@ export default function PromotionsPage() {
       image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDXRvg2gCHLRQIsqDYHn-DWSo0CkTy7PVIp_ybo5nmy0bwIHVxsV0rloZ9uqYqY1obqjGMV8717MLDi1OEdDPITXomcxHECdRZ2xtlENhsfugvMPvo722aaMLK1yHLQhpCi9LkZ2c6CbIdifXGOsF1tRRO6eT8YNsAKyTZd3-5sda8oX9AV2jkJPunyI5mKZjjRfMJ6_Xq_08dCAu8YImg8eaSaBzPNynXLPWA-VhUo023AmutH4-IaKZtVJ8Ll5IdWlxcajiusJSE',
       category: 'Cashback',
       categoryColor: 'bg-teal-500/80',
-      buttonText: 'View Details',
+      buttonText: t('promotions.viewDetails'),
       buttonStyle: 'bg-primary/20 text-primary hover:bg-primary/30',
       type: 'Casino',
       tag: 'Cashback'
@@ -40,7 +42,7 @@ export default function PromotionsPage() {
       image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBrFG4eQD5_CjZTdY-6cnetN4MwGN0ISMNcYrHbOD9s4YjeRGmItxbL9uRhMgd19-e-rfQEllxX4UcEk48tujdRb2PIwbCAz_4AeC7_62npqiMcXexkGUz6BEainyfzvYRMo-1U1Inh-1yhW8ynCG6_B8-8FVfE_V_jNQs_Ediun9QTkUWp3frxbg4dRi8qvgCX3YzL4BZ9kHCzNi8xzIBM72ZrscDI-3C3s_1xg-CXr1vfnwMvlgvuoRX0mqWexgeKnPGMfC56pcI',
       category: 'Reload',
       categoryColor: 'bg-purple-500/80',
-      buttonText: 'View Details',
+      buttonText: t('promotions.viewDetails'),
       buttonStyle: 'bg-primary/20 text-primary hover:bg-primary/30',
       type: 'Casino',
       tag: 'Reload'
@@ -52,7 +54,7 @@ export default function PromotionsPage() {
       image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAa8SzdL191R9gU5ZZ0vu4ibLfAa-NVCptzN4LB1NWw8kc3gX-frQLyENG9lnWpR6NOzyVWVRf9u6D_sRzqch3v6A2vmqkXw2U2w2OdHR1BmluY-phNqIDiix5Ngj7rthvVkTTJynQP-qKuU5fWeVtSixrOaoM8YX5MFYmOIKVKJxXm5u98IOG8784Xi65mfFC4FysZkMHJ49UeDX0fzuKzLHV1FQi6OwoEzURbOq5QsNVXXxO6IteLryJE1YbzNuk4nE0gbdqI8yM',
       category: 'Welcome',
       categoryColor: 'bg-blue-500/80',
-      buttonText: 'Claim',
+      buttonText: t('promotions.claim'),
       buttonStyle: 'bg-primary text-background-dark hover:bg-yellow-400',
       type: 'Live Casino',
       tag: 'Welcome Bonus'
@@ -64,7 +66,7 @@ export default function PromotionsPage() {
       image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAf_diYheJlKcLeKanz4kpa9IEObVQzmOtIJ8KfDIGq0D7A5nJ7iRHYlqzHA9X_YcdmiTnhWSQjsGz34zphp5gn9ROlXLOOYwb_4oLwVMOI3KVqs91XNNb1yTmNOe3U8KE-kdbvwd3GruU_24Ei6uJUzSctS3VwcVmjvC7viJF9mvzlkJnJ_XkUJTFd_jF6WcB07G5vO9Qzgu6CVE0aXTvfS4zH_akeXiD-RAQBRE5y1KweKyjrJCiqs0yZflBHYfdXGWI5bmsj0Qw',
       category: 'Spins',
       categoryColor: 'bg-green-500/80',
-      buttonText: 'View Details',
+      buttonText: t('promotions.viewDetails'),
       buttonStyle: 'bg-primary/20 text-primary hover:bg-primary/30',
       type: 'Casino',
       tag: 'Spins'
@@ -76,23 +78,23 @@ export default function PromotionsPage() {
       image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCb_Y51Peg7-CmwCSEzjC0KkkfnSDDycCrgLvWWEDs8H1CrQjCcw_p345FEH4gVAVCZU78NDbhdxlVYaMFI1QekR3oI67Y8bNEtmLb1HAF_G-MdVcga_9nL_A5oZCHeoRjIC8Z0r4BG0-rbt7loQm5uaRJlb0QHl0D_y4KqPmu9y-Z8tPVq6BseGuzRuOwCDDTc0O8nvvDsAOKMn05am9Q-_DgwHe41ggImKoVdw2f16TKr5f44Aifur0Q9FlYUacmic1NMkUoN1Tc',
       category: 'Esports',
       categoryColor: 'bg-red-500/80',
-      buttonText: 'Claim',
+      buttonText: t('promotions.claim'),
       buttonStyle: 'bg-primary text-background-dark hover:bg-yellow-400',
       type: 'Sports',
       tag: 'Esports'
     }
   ]
 
-  const filters = ['All', 'Casino', 'Sports', 'Welcome Bonus', 'Cashback', 'Reload']
+  const filters = [t('promotions.all'), t('promotions.casino'), t('promotions.sports'), t('promotions.welcomeBonus'), t('promotions.cashback'), t('promotions.reload')]
 
-  const filteredPromotions = selectedFilter === 'All' 
+  const filteredPromotions = selectedFilter === t('promotions.all') 
     ? promotions 
     : promotions.filter(promo => {
-        if (selectedFilter === 'Casino') return promo.type === 'Casino'
-        if (selectedFilter === 'Sports') return promo.type === 'Sports'
-        if (selectedFilter === 'Welcome Bonus') return promo.tag === 'Welcome Bonus'
-        if (selectedFilter === 'Cashback') return promo.tag === 'Cashback'
-        if (selectedFilter === 'Reload') return promo.tag === 'Reload'
+        if (selectedFilter === t('promotions.casino')) return promo.type === 'Casino'
+        if (selectedFilter === t('promotions.sports')) return promo.type === 'Sports'
+        if (selectedFilter === t('promotions.welcomeBonus')) return promo.tag === 'Welcome Bonus'
+        if (selectedFilter === t('promotions.cashback')) return promo.tag === 'Cashback'
+        if (selectedFilter === t('promotions.reload')) return promo.tag === 'Reload'
         return true
       })
 

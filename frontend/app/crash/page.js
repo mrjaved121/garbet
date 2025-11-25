@@ -3,8 +3,10 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
+import { useTranslation } from '@/hooks/useTranslation'
 
 export default function CrashPage() {
+  const { t } = useTranslation()
   const [betAmount, setBetAmount] = useState('')
   const [selectedBetAmount, setSelectedBetAmount] = useState('50')
   const [autoCashOut, setAutoCashOut] = useState('1.50x')
@@ -25,11 +27,11 @@ export default function CrashPage() {
   ]
 
   const recentBets = [
-    { player: 'Player_1234', bet: '100.00 TL', multiplier: '2.50x', profit: '+150.00 TL', profitColor: 'text-accent-teal' },
-    { player: 'GamerProTR', bet: '50.00 TL', multiplier: 'Crashed', profit: '-50.00 TL', profitColor: 'text-red-400' },
-    { player: 'LuckyStar77', bet: '250.00 TL', multiplier: '8.75x', profit: '+1937.50 TL', profitColor: 'text-accent-teal' },
-    { player: 'BetKing_IST', bet: '75.00 TL', multiplier: '1.89x', profit: '+66.75 TL', profitColor: 'text-accent-teal' },
-    { player: 'HighRoller06', bet: '1000.00 TL', multiplier: '11.05x', profit: '+10050.00 TL', profitColor: 'text-accent-teal' }
+    { player: 'Player_1234', bet: '100.00 TL', multiplier: '2.50x', profit: '+150.00 TL', profitColor: 'text-accent-teal', isCrashed: false },
+    { player: 'GamerProTR', bet: '50.00 TL', multiplier: 'Crashed', profit: '-50.00 TL', profitColor: 'text-red-400', isCrashed: true },
+    { player: 'LuckyStar77', bet: '250.00 TL', multiplier: '8.75x', profit: '+1937.50 TL', profitColor: 'text-accent-teal', isCrashed: false },
+    { player: 'BetKing_IST', bet: '75.00 TL', multiplier: '1.89x', profit: '+66.75 TL', profitColor: 'text-accent-teal', isCrashed: false },
+    { player: 'HighRoller06', bet: '1000.00 TL', multiplier: '11.05x', profit: '+10050.00 TL', profitColor: 'text-accent-teal', isCrashed: false }
   ]
 
   const quickBetAmounts = ['10', '50', '100', '500']
@@ -85,7 +87,7 @@ export default function CrashPage() {
           <aside className="col-span-12 lg:col-span-3 order-3 lg:order-3">
             <div className="bg-surface/50 rounded-lg p-4 space-y-4 h-full">
               <label className="flex flex-col">
-                <p className="text-text-secondary text-sm font-medium pb-2">Bet Amount (TL)</p>
+                <p className="text-text-secondary text-sm font-medium pb-2">{t('crash.betAmount')}</p>
                 <div className="flex w-full items-stretch rounded-lg">
                   <input 
                     className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border-none bg-surface h-14 placeholder:text-text-secondary p-4 rounded-r-none border-r-0 pr-2 text-base font-normal leading-normal" 
@@ -122,7 +124,7 @@ export default function CrashPage() {
               </div>
 
               <label className="flex flex-col">
-                <p className="text-text-secondary text-sm font-medium pb-2">Auto Cash-out</p>
+                <p className="text-text-secondary text-sm font-medium pb-2">{t('crash.autoCashout')}</p>
                 <div className="flex w-full items-stretch rounded-lg">
                   <input 
                     className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border-none bg-surface h-14 placeholder:text-text-secondary p-4 text-base font-normal leading-normal" 
@@ -135,22 +137,22 @@ export default function CrashPage() {
               </label>
 
               <button className="w-full flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-14 px-4 bg-primary text-background-dark text-base font-bold leading-normal tracking-wide hover:bg-yellow-400 transition-colors shadow-md shadow-primary/20">
-                <span className="truncate">Place Bet</span>
+                <span className="truncate">{t('crash.placeBet')}</span>
               </button>
             </div>
           </aside>
 
           <div className="col-span-12 order-4 mt-4">
             <div className="bg-surface/50 rounded-lg p-4">
-              <h3 className="text-text-secondary font-semibold text-lg mb-4">Recent Bets</h3>
+              <h3 className="text-text-secondary font-semibold text-lg mb-4">{t('crash.recentBets')}</h3>
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-sm">
                   <thead className="text-xs text-text-secondary uppercase border-b border-surface">
                     <tr>
-                      <th className="px-6 py-3" scope="col">Player</th>
-                      <th className="px-6 py-3" scope="col">Bet</th>
-                      <th className="px-6 py-3" scope="col">Multiplier</th>
-                      <th className="px-6 py-3 text-right" scope="col">Profit</th>
+                      <th className="px-6 py-3" scope="col">{t('crash.player')}</th>
+                      <th className="px-6 py-3" scope="col">{t('crash.bet')}</th>
+                      <th className="px-6 py-3" scope="col">{t('crash.multiplier')}</th>
+                      <th className="px-6 py-3 text-right" scope="col">{t('crash.profit')}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -158,7 +160,7 @@ export default function CrashPage() {
                       <tr key={index} className={index < recentBets.length - 1 ? "border-b border-surface/50" : ""}>
                         <th className="px-6 py-4 font-medium text-white whitespace-nowrap" scope="row">{bet.player}</th>
                         <td className="px-6 py-4">{bet.bet}</td>
-                        <td className={`px-6 py-4 ${bet.multiplier === 'Crashed' ? 'text-red-400' : ''}`}>{bet.multiplier}</td>
+                        <td className={`px-6 py-4 ${bet.isCrashed ? 'text-red-400' : ''}`}>{bet.isCrashed ? t('crash.crashed') : bet.multiplier}</td>
                         <td className={`px-6 py-4 text-right ${bet.profitColor}`}>{bet.profit}</td>
                       </tr>
                     ))}

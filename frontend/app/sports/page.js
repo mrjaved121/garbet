@@ -3,11 +3,13 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
+import { useTranslation } from '@/hooks/useTranslation'
 
 export default function SportsPage() {
-  const [dateFilter, setDateFilter] = useState('Today')
+  const { t } = useTranslation()
+  const [dateFilter, setDateFilter] = useState(t('sports.today'))
   const [selectedBets, setSelectedBets] = useState([])
-  const [sortBy, setSortBy] = useState('Time')
+  const [sortBy, setSortBy] = useState(t('sports.time'))
 
   const matches = [
     {
@@ -57,7 +59,7 @@ export default function SportsPage() {
                   </div>
                   <input 
                     className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-primary focus:outline-0 focus:ring-2 focus:ring-primary/50 border-none bg-background-dark h-full placeholder:text-text-secondary px-4 rounded-l-none border-l-0 pl-2 text-sm font-normal leading-normal" 
-                    placeholder="Search for teams or leagues" 
+                    placeholder={t('sports.searchPlaceholder')} 
                     type="text"
                   />
                 </div>
@@ -66,7 +68,7 @@ export default function SportsPage() {
               {/* Segmented Buttons */}
               <div className="flex">
                 <div className="flex h-10 flex-1 items-center justify-center rounded-lg bg-background-dark p-1">
-                  {['Today', 'Tomorrow', '3 Days', 'All'].map((option) => (
+                  {[t('sports.today'), t('sports.tomorrow'), t('sports.threeDays'), t('sports.all')].map((option) => (
                     <label 
                       key={option}
                       className={`flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-md px-2 text-text-secondary text-sm font-medium leading-normal ${
@@ -128,18 +130,18 @@ export default function SportsPage() {
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <p className="text-xs text-text-secondary">Sports &gt; Football &gt; <span className="text-text-primary">Turkey &gt; Süper Lig</span></p>
               <div className="flex items-center gap-2 text-sm">
-                <span className="text-text-secondary">Sort by:</span>
+                <span className="text-text-secondary">{t('sports.sortBy')}</span>
                 <button 
-                  onClick={() => setSortBy('Time')}
-                  className={`rounded-md px-3 py-1 ${sortBy === 'Time' ? 'bg-surface text-text-primary' : 'text-text-secondary'}`}
+                  onClick={() => setSortBy(t('sports.time'))}
+                  className={`rounded-md px-3 py-1 ${sortBy === t('sports.time') ? 'bg-surface text-text-primary' : 'text-text-secondary'}`}
                 >
-                  Time
+                  {t('sports.time')}
                 </button>
                 <button 
-                  onClick={() => setSortBy('League')}
-                  className={`rounded-md px-3 py-1 ${sortBy === 'League' ? 'bg-surface text-text-primary' : 'text-text-secondary'}`}
+                  onClick={() => setSortBy(t('sports.league'))}
+                  className={`rounded-md px-3 py-1 ${sortBy === t('sports.league') ? 'bg-surface text-text-primary' : 'text-text-secondary'}`}
                 >
-                  League
+                  {t('sports.league')}
                 </button>
               </div>
             </div>
@@ -187,12 +189,12 @@ export default function SportsPage() {
           {/* Right Sidebar (Bet Slip) */}
           <aside className="col-span-12 hidden lg:col-span-3 lg:block">
             <div className="sticky top-24 flex flex-col gap-4 rounded-lg bg-surface p-4">
-              <h3 className="font-heading text-lg font-semibold text-white">Bet Slip</h3>
+              <h3 className="font-heading text-lg font-semibold text-white">{t('sports.betSlip')}</h3>
 
               {selectedBets.length === 0 ? (
                 <div className="flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-border-color p-8 text-center">
                   <span className="material-symbols-outlined text-4xl text-text-secondary">receipt_long</span>
-                  <p className="mt-2 text-sm text-text-secondary">Select an outcome to place a bet.</p>
+                  <p className="mt-2 text-sm text-text-secondary">{t('sports.selectOutcome')}</p>
                 </div>
               ) : (
                 <div className="flex flex-col gap-4">
@@ -202,15 +204,15 @@ export default function SportsPage() {
 
               <div className="flex flex-col gap-4">
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-text-secondary">Total Odds</span>
+                  <span className="text-text-secondary">{t('sports.totalOdds')}</span>
                   <span className="font-bold text-white">{totalOdds}</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-text-secondary">Total Stake</span>
+                  <span className="text-text-secondary">{t('sports.totalStake')}</span>
                   <span className="font-bold text-white">₺{totalStake}</span>
                 </div>
                 <div className="flex items-center justify-between text-lg">
-                  <span className="text-text-secondary">Potential Winnings</span>
+                  <span className="text-text-secondary">{t('sports.potentialWinnings')}</span>
                   <span className="font-bold text-primary">₺{potentialWinnings}</span>
                 </div>
                 <button 
@@ -221,7 +223,7 @@ export default function SportsPage() {
                   }`}
                   disabled={selectedBets.length === 0}
                 >
-                  Place Bet
+                  {t('sports.placeBet')}
                 </button>
               </div>
             </div>
@@ -232,7 +234,7 @@ export default function SportsPage() {
       {/* Mobile Bet Slip Button */}
       <div className="sticky bottom-0 left-0 right-0 lg:hidden p-4 bg-gradient-to-t from-background-dark to-transparent">
         <button className="w-full flex justify-between items-center rounded-lg bg-primary py-3 px-4 text-background-dark font-bold shadow-lg shadow-primary/20">
-          <span>View Bet Slip ({selectedBets.length})</span>
+          <span>{t('sports.betSlip')} ({selectedBets.length})</span>
           <span className="material-symbols-outlined">expand_less</span>
         </button>
       </div>

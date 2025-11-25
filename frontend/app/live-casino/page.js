@@ -3,9 +3,11 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
+import { useTranslation } from '@/hooks/useTranslation'
 
 export default function LiveCasinoPage() {
-  const [selectedProvider, setSelectedProvider] = useState('Tümü')
+  const { t } = useTranslation()
+  const [selectedProvider, setSelectedProvider] = useState(t('liveCasino.all'))
 
   const games = [
     {
@@ -90,7 +92,7 @@ export default function LiveCasinoPage() {
     }
   ]
 
-  const providers = ['Tümü', 'Evolution', 'Pragmatic Live', 'Ezugi', 'Playtech', 'Vivo Gaming']
+  const providers = [t('liveCasino.all'), 'Evolution', 'Pragmatic Live', 'Ezugi', 'Playtech', 'Vivo Gaming']
 
   return (
     <div className="relative flex h-auto min-h-screen w-full flex-col bg-[#181611] dark group/design-root overflow-x-hidden" style={{ fontFamily: 'Inter, "Noto Sans", sans-serif' }}>
@@ -185,7 +187,7 @@ export default function LiveCasinoPage() {
                     </div>
                     <div className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                       <button className="flex items-center justify-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-bold text-black">
-                        <span>Şimdi Oyna</span>
+                        <span>{t('liveCasino.playNow')}</span>
                         <span className="material-symbols-outlined text-base">play_arrow</span>
                       </button>
                     </div>

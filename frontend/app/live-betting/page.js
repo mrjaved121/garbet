@@ -3,14 +3,16 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
+import { useTranslation } from '@/hooks/useTranslation'
 
 export default function LiveBettingPage() {
+  const { t } = useTranslation()
   const [selectedBets, setSelectedBets] = useState([
-    { match: 'Galatasaray vs Fenerbahçe', type: 'Maç Sonucu', selection: '1', odds: 1.85 },
-    { match: 'Man City vs Arsenal', type: 'Maç Sonucu', selection: 'X', odds: 4.00 }
+    { match: 'Galatasaray vs Fenerbahçe', type: t('liveBetting.matchResult'), selection: '1', odds: 1.85 },
+    { match: 'Man City vs Arsenal', type: t('liveBetting.matchResult'), selection: 'X', odds: 4.00 }
   ])
   const [stake, setStake] = useState('10.00')
-  const [timeFilter, setTimeFilter] = useState('Live Now')
+  const [timeFilter, setTimeFilter] = useState(t('liveBetting.live'))
 
   const totalOdds = selectedBets.reduce((acc, bet) => acc * bet.odds, 1).toFixed(2)
   const maxWinnings = (parseFloat(stake) * parseFloat(totalOdds)).toFixed(2)
@@ -88,12 +90,12 @@ export default function LiveBettingPage() {
                 <input checked={timeFilter === 'Live Now'} onChange={() => setTimeFilter('Live Now')} className="invisible w-0" name="time-filter" type="radio" value="Live Now"/>
               </label>
               <label className="flex h-full flex-1 cursor-pointer items-center justify-center overflow-hidden rounded-md px-3 text-sm font-medium leading-normal text-secondary-text has-[:checked]:bg-surface has-[:checked]:text-primary-text">
-                <span className="truncate">Bugün</span>
-                <input checked={timeFilter === 'Today'} onChange={() => setTimeFilter('Today')} className="invisible w-0" name="time-filter" type="radio" value="Today"/>
+                <span className="truncate">{t('liveBetting.today')}</span>
+                <input checked={timeFilter === t('liveBetting.today')} onChange={() => setTimeFilter(t('liveBetting.today'))} className="invisible w-0" name="time-filter" type="radio" value={t('liveBetting.today')}/>
               </label>
               <label className="flex h-full flex-1 cursor-pointer items-center justify-center overflow-hidden rounded-md px-3 text-sm font-medium leading-normal text-secondary-text has-[:checked]:bg-surface has-[:checked]:text-primary-text">
-                <span className="truncate">Yakında</span>
-                <input checked={timeFilter === 'Upcoming'} onChange={() => setTimeFilter('Upcoming')} className="invisible w-0" name="time-filter" type="radio" value="Upcoming"/>
+                <span className="truncate">{t('liveBetting.upcoming')}</span>
+                <input checked={timeFilter === t('liveBetting.upcoming')} onChange={() => setTimeFilter(t('liveBetting.upcoming'))} className="invisible w-0" name="time-filter" type="radio" value={t('liveBetting.upcoming')}/>
               </label>
             </div>
           </div>
@@ -101,7 +103,7 @@ export default function LiveBettingPage() {
           {/* Match List */}
           <div className="mt-6 flex flex-col gap-4">
             {/* SectionHeader */}
-            <h2 className="text-2xl font-bold leading-tight tracking-[-0.015em] text-primary-text px-2">Canlı Futbol</h2>
+            <h2 className="text-2xl font-bold leading-tight tracking-[-0.015em] text-primary-text px-2">{t('liveBetting.liveFootball')}</h2>
 
             {matches.map((league, leagueIndex) => (
               <div key={leagueIndex} className={`flex flex-col gap-2 ${leagueIndex > 0 ? 'mt-4' : ''}`}>
@@ -137,12 +139,12 @@ export default function LiveBettingPage() {
         {/* BetSlip - Desktop */}
         <aside className="sticky top-24 hidden h-fit w-full max-w-xs flex-col gap-4 lg:flex">
           <div className="rounded-lg bg-surface p-4 shadow-soft">
-            <h3 className="mb-4 text-lg font-bold text-primary-text">Bahis Kuponu</h3>
+            <h3 className="mb-4 text-lg font-bold text-primary-text">{t('liveBetting.betSlip')}</h3>
 
             {selectedBets.length === 0 ? (
               <div className="flex flex-col items-center justify-center py-10">
                 <span className="material-symbols-outlined text-4xl text-secondary-text">receipt_long</span>
-                <p className="mt-2 text-sm text-secondary-text">Seçimleriniz burada görünecek.</p>
+                <p className="mt-2 text-sm text-secondary-text">{t('liveBetting.yourSelections')}</p>
               </div>
             ) : (
               <div className="flex flex-col gap-3">
@@ -158,7 +160,7 @@ export default function LiveBettingPage() {
                       </button>
                     </div>
                     <div className="mt-2 flex items-center justify-between">
-                      <p className="text-sm font-bold text-primary">Seçim: {bet.selection}</p>
+                      <p className="text-sm font-bold text-primary">{t('liveBetting.selectionLabel')}: {bet.selection}</p>
                       <p className="text-sm font-bold text-primary-text">@{bet.odds}</p>
                     </div>
                   </div>
@@ -167,11 +169,11 @@ export default function LiveBettingPage() {
                 {/* Total Odds and Stake */}
                 <div className="mt-2 border-t border-background-dark pt-3">
                   <div className="flex justify-between text-sm font-medium text-secondary-text">
-                    <span>Toplam Oran</span>
+                    <span>{t('liveBetting.totalOdds')}</span>
                     <span className="text-primary-text">{totalOdds}</span>
                   </div>
                   <div className="mt-3">
-                    <label className="mb-1 block text-sm font-medium text-secondary-text" htmlFor="stake-desktop">Miktar</label>
+                    <label className="mb-1 block text-sm font-medium text-secondary-text" htmlFor="stake-desktop">{t('liveBetting.stake')}</label>
                     <div className="relative">
                       <input
                         className="w-full rounded-lg border-none bg-background-dark py-2 pl-3 pr-12 text-primary-text focus:ring-2 focus:ring-primary"
@@ -184,14 +186,14 @@ export default function LiveBettingPage() {
                     </div>
                   </div>
                   <div className="mt-3 flex justify-between text-sm font-medium text-secondary-text">
-                    <span>Maksimum Kazanç</span>
+                    <span>{t('liveBetting.maxWinnings')}</span>
                     <span className="text-lg font-bold text-primary">{maxWinnings} TRY</span>
                   </div>
                 </div>
 
                 {/* CTA */}
                 <button className="mt-4 flex h-12 w-full items-center justify-center rounded-lg bg-primary text-base font-bold text-background-dark shadow-soft transition-opacity hover:opacity-90">
-                  Bahis Yap
+                  {t('liveBetting.placeBet')}
                 </button>
               </div>
             )}

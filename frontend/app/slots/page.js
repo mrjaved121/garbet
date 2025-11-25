@@ -3,9 +3,11 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
+import { useTranslation } from '@/hooks/useTranslation'
 
 export default function SlotsPage() {
-  const [selectedCategory, setSelectedCategory] = useState('Tümü')
+  const { t } = useTranslation()
+  const [selectedCategory, setSelectedCategory] = useState(t('slots.all'))
   const [currentPage, setCurrentPage] = useState(1)
 
   const games = [
@@ -83,7 +85,7 @@ export default function SlotsPage() {
     }
   ]
 
-  const categories = ['Tümü', 'Popüler', 'Yeni', 'Jackpot', 'Yüksek Volatilite', 'Megaways']
+  const categories = [t('slots.all'), t('slots.popular'), t('slots.new'), t('slots.jackpot'), t('slots.highVolatility'), t('slots.megaways')]
 
   return (
     <div className="relative flex min-h-screen w-full flex-col bg-[#181611]">
@@ -149,7 +151,7 @@ export default function SlotsPage() {
               <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <button className="flex items-center justify-center gap-2 rounded-xl h-12 px-6 bg-primary text-[#181611] text-lg font-bold hover:bg-yellow-400 transition-colors">
                   <span className="material-symbols-outlined">play_arrow</span>
-                  Oyna
+                  {t('slots.play')}
                 </button>
               </div>
             </div>

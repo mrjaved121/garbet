@@ -43,15 +43,15 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-2">
           <Link href="/deposit" className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded h-9 px-4 bg-green-500 text-white text-xs font-bold leading-normal tracking-wide hover:bg-green-600 transition-all gap-1">
             <span className="material-symbols-outlined text-base">account_balance_wallet</span>
-            <span className="truncate">DEPOSIT</span>
+            <span className="truncate">{t('common.depositButton')}</span>
           </Link>
           <button className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded h-9 px-4 bg-yellow-500 text-black text-xs font-bold leading-normal tracking-wide hover:bg-yellow-600 transition-colors gap-1">
             <span className="material-symbols-outlined text-base">star</span>
-            <span className="truncate">BONUSES</span>
+            <span className="truncate">{t('common.bonusesButton')}</span>
           </button>
           <button className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded h-9 px-4 bg-[#2b284e] text-white text-xs font-bold leading-normal tracking-wide hover:bg-[#3a376a] transition-colors gap-1">
             <span className="material-symbols-outlined text-base">email</span>
-            <span className="truncate">MESSAGES</span>
+            <span className="truncate">{t('common.messagesButton')}</span>
           </button>
         </div>
         <div className="flex items-center gap-2">
@@ -110,16 +110,16 @@ export default function Navbar() {
           href="/crash" 
           className={`secondary-nav-item ${isActive('/crash') ? 'active' : ''}`}
         >
-          <span className="material-symbols-outlined text-base" style={{ fontVariationSettings: isActive('/crash') ? "'FILL' 1" : "'FILL' 0" }}>trending_up</span> CRASH
+          <span className="material-symbols-outlined text-base" style={{ fontVariationSettings: isActive('/crash') ? "'FILL' 1" : "'FILL' 0" }}>trending_up</span> {t('common.crash')}
         </Link>
         <a className="secondary-nav-item" href="#">
-          <span className="material-symbols-outlined text-base">live_tv</span> TV GAMES
+          <span className="material-symbols-outlined text-base">live_tv</span> {t('common.tvGames')}
         </a>
         <a className="secondary-nav-item" href="#">
-          <span className="material-symbols-outlined text-base">emoji_events</span> TOURNAMENTS
+          <span className="material-symbols-outlined text-base">emoji_events</span> {t('common.tournaments')}
         </a>
         <a className="secondary-nav-item" href="#">
-          <span className="material-symbols-outlined text-base">more_horiz</span> More
+          <span className="material-symbols-outlined text-base">more_horiz</span> {t('common.more')}
         </a>
       </nav>
     </header>
