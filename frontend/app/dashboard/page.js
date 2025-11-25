@@ -2,57 +2,59 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { useTranslation } from '@/hooks/useTranslation'
 
 export default function DashboardPage() {
-  const [activeMenu, setActiveMenu] = useState('Genel Bakış')
+  const { t } = useTranslation()
+  const [activeMenu, setActiveMenu] = useState(t('dashboard.menuOverview'))
 
   const menuItems = [
-    { id: 'overview', label: 'Genel Bakış', icon: 'dashboard', active: true },
-    { id: 'deposit', label: 'Para Yatır', icon: 'account_balance_wallet' },
-    { id: 'withdraw', label: 'Para Çek', icon: 'payments' },
-    { id: 'bet-history', label: 'Bahis Geçmişi', icon: 'receipt_long' },
-    { id: 'game-history', label: 'Oyun Geçmişi', icon: 'casino' },
-    { id: 'bonuses', label: 'Bonuslar', icon: 'emoji_events' },
-    { id: 'messages', label: 'Mesajlar', icon: 'mail' },
-    { id: 'settings', label: 'Ayarlar', icon: 'settings' }
+    { id: 'overview', label: t('dashboard.menuOverview'), icon: 'dashboard', active: true },
+    { id: 'deposit', label: t('dashboard.menuDeposit'), icon: 'account_balance_wallet' },
+    { id: 'withdraw', label: t('dashboard.menuWithdraw'), icon: 'payments' },
+    { id: 'bet-history', label: t('dashboard.menuBetHistory'), icon: 'receipt_long' },
+    { id: 'game-history', label: t('dashboard.menuGameHistory'), icon: 'casino' },
+    { id: 'bonuses', label: t('dashboard.menuBonuses'), icon: 'emoji_events' },
+    { id: 'messages', label: t('dashboard.menuMessages'), icon: 'mail' },
+    { id: 'settings', label: t('dashboard.menuSettings'), icon: 'settings' }
   ]
 
   const recentActivities = [
     {
       id: 1,
       type: 'deposit',
-      title: 'Para Yatırma',
+      title: t('dashboard.activityDeposit'),
       description: 'Visa Kart',
       amount: '+ ₺250.00',
       amountColor: 'text-teal',
       icon: 'paid',
       iconBg: 'bg-teal/10',
       iconColor: 'text-teal',
-      date: 'Bugün, 14:32'
+      date: `${t('dashboard.today')}, 14:32`
     },
     {
       id: 2,
       type: 'bet',
-      title: 'Bahis Oynandı',
+      title: t('dashboard.activityBet'),
       description: 'Galatasaray - Fenerbahçe',
       amount: '- ₺50.00',
       amountColor: 'text-red-400',
       icon: 'sports_soccer',
       iconBg: 'bg-red-500/10',
       iconColor: 'text-red-400',
-      date: 'Dün, 21:05'
+      date: `${t('dashboard.yesterday')}, 21:05`
     },
     {
       id: 3,
       type: 'win',
-      title: 'Kazanç',
+      title: t('dashboard.activityWin'),
       description: 'Sweet Bonanza',
       amount: '+ ₺120.75',
       amountColor: 'text-green-400',
       icon: 'toll',
       iconBg: 'bg-green-500/10',
       iconColor: 'text-green-400',
-      date: '2 gün önce'
+      date: `2 ${t('dashboard.daysAgo')}`
     }
   ]
 
@@ -134,11 +136,11 @@ export default function DashboardPage() {
           </div>
           <div className="flex items-center gap-2 sm:gap-4">
             <div className="hidden sm:flex flex-col items-end">
-              <span className="text-xs text-gray-400">Bakiye</span>
+              <span className="text-xs text-gray-400">{t('common.balance')}</span>
               <span className="font-bold text-white">₺1,500.00</span>
             </div>
             <button className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-background-dark text-sm font-bold shadow-md hover:brightness-110 transition-all">
-              <span className="truncate">Para Yatır</span>
+              <span className="truncate">{t('common.deposit')}</span>
             </button>
             <button className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-surface text-white gap-2 text-sm font-bold min-w-0 px-2.5 hover:bg-surface/80 transition-colors">
               <span className="material-symbols-outlined">notifications</span>
@@ -153,8 +155,8 @@ export default function DashboardPage() {
             {/* PageHeading */}
             <div className="flex flex-wrap justify-between gap-3">
               <div className="flex min-w-72 flex-col gap-1">
-                <p className="text-white text-3xl md:text-4xl font-black tracking-tight">Genel Bakış</p>
-                <p className="text-gray-400 text-base font-normal">Tekrar hoş geldin, Kullanıcı!</p>
+                <p className="text-white text-3xl md:text-4xl font-black tracking-tight">{t('dashboard.title')}</p>
+                <p className="text-gray-400 text-base font-normal">{t('dashboard.welcomeBack')}</p>
               </div>
             </div>
 
@@ -164,22 +166,22 @@ export default function DashboardPage() {
               <div className="xl:col-span-2 flex flex-col gap-6">
                 {/* Wallet Card */}
                 <div className="rounded-lg bg-surface p-6 shadow-lg">
-                  <p className="text-gray-400 text-sm font-medium mb-1">Cüzdanım</p>
+                  <p className="text-gray-400 text-sm font-medium mb-1">{t('dashboard.myWallet')}</p>
                   <p className="text-white text-4xl font-bold tracking-tight mb-2">₺1,500.00</p>
-                  <p className="text-gray-300 text-base font-normal mb-6">Nakit Bakiye: ₺1,000.00 | Bonus Bakiye: ₺500.00</p>
+                  <p className="text-gray-300 text-base font-normal mb-6">{t('dashboard.cashBalance')}: ₺1,000.00 | {t('dashboard.bonusBalance')}: ₺500.00</p>
                   <div className="flex flex-wrap gap-3">
                     <button className="flex flex-1 sm:flex-none min-w-[120px] items-center justify-center rounded-lg h-12 px-5 bg-primary text-background-dark text-base font-bold shadow-md hover:brightness-110 transition-all">
-                      <span className="truncate">Para Yatır</span>
+                      <span className="truncate">{t('common.deposit')}</span>
                     </button>
                     <button className="flex flex-1 sm:flex-none min-w-[120px] items-center justify-center rounded-lg h-12 px-5 bg-[#3e3e47] text-white text-base font-bold hover:bg-[#4a4a55] transition-colors">
-                      <span className="truncate">Para Çek</span>
+                      <span className="truncate">{t('common.withdraw')}</span>
                     </button>
                   </div>
                 </div>
 
                 {/* Recent Activity */}
                 <div className="rounded-lg bg-surface p-6 shadow-lg">
-                  <h3 className="text-xl font-bold text-white mb-4">Son Hareketler</h3>
+                  <h3 className="text-xl font-bold text-white mb-4">{t('dashboard.recentActivities')}</h3>
                   <div className="flex flex-col gap-4">
                     {recentActivities.map((activity) => (
                       <div key={activity.id} className="flex items-center gap-4">
@@ -204,13 +206,13 @@ export default function DashboardPage() {
               <div className="xl:col-span-1 flex flex-col gap-6">
                 {/* Active Bonuses Card */}
                 <div className="rounded-lg bg-surface p-6 shadow-lg">
-                  <h3 className="text-xl font-bold text-white mb-4">Aktif Bonuslar</h3>
+                  <h3 className="text-xl font-bold text-white mb-4">{t('dashboard.activeBonuses')}</h3>
                   <div className="flex flex-col gap-4">
-                    <p className="text-base font-semibold text-primary">100% Hoş Geldin Bonusu</p>
-                    <p className="text-sm text-gray-300">Bonus çevrim şartını tamamlamak için ilerlemen.</p>
+                    <p className="text-base font-semibold text-primary">{t('dashboard.welcomeBonus')}</p>
+                    <p className="text-sm text-gray-300">{t('dashboard.welcomeBonusDescription')}</p>
                     <div>
                       <div className="flex justify-between text-xs text-gray-400 mb-1">
-                        <span>İlerleme</span>
+                        <span>{t('dashboard.progress')}</span>
                         <span>₺1,250 / ₺5,000</span>
                       </div>
                       <div className="w-full bg-[#3e3e47] rounded-full h-2.5">
@@ -218,7 +220,7 @@ export default function DashboardPage() {
                       </div>
                     </div>
                     <button className="w-full mt-2 flex items-center justify-center rounded-lg h-11 px-5 bg-[#3e3e47] text-white text-sm font-bold hover:bg-[#4a4a55] transition-colors">
-                      <span className="truncate">Tüm Bonusları Gör</span>
+                      <span className="truncate">{t('dashboard.seeAllBonuses')}</span>
                     </button>
                   </div>
                 </div>

@@ -2,8 +2,10 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { useTranslation } from '@/hooks/useTranslation'
 
 export default function LoginPage() {
+  const { t } = useTranslation()
   const [showPassword, setShowPassword] = useState(false)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -28,19 +30,19 @@ export default function LoginPage() {
         <main className="w-full rounded-xl border border-white/10 bg-[#1E1E1E]/85 p-6 shadow-2xl shadow-black/30 md:p-8">
           <div className="flex flex-col gap-6">
             <div className="text-center">
-              <h1 className="text-2xl font-bold leading-tight tracking-tight text-white md:text-3xl">Welcome Back</h1>
-              <p className="mt-1 text-sm text-[#E0E0E0]/60">Login to your account to continue</p>
+              <h1 className="text-2xl font-bold leading-tight tracking-tight text-white md:text-3xl">{t('login.title')}</h1>
+              <p className="mt-1 text-sm text-[#E0E0E0]/60">{t('login.subtitle')}</p>
             </div>
 
             <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
               <div className="flex flex-col">
                 <label className="pb-2 text-sm font-medium leading-normal text-[#E0E0E0]" htmlFor="email">
-                  Email Address
+                  {t('login.email')}
                 </label>
                 <input
                   className="form-input h-12 w-full flex-1 resize-none overflow-hidden rounded-lg border border-[#544d3b] bg-[#27241c] p-3 text-base font-normal leading-normal text-white placeholder:text-[#b9b29d]/70 focus:border-primary focus:outline-0 focus:ring-2 focus:ring-primary/40"
                   id="email"
-                  placeholder="Enter your email"
+                  placeholder={t('login.emailPlaceholder')}
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -50,13 +52,13 @@ export default function LoginPage() {
 
               <div className="flex flex-col">
                 <label className="pb-2 text-sm font-medium leading-normal text-[#E0E0E0]" htmlFor="password">
-                  Password
+                  {t('login.password')}
                 </label>
                 <div className="relative flex w-full flex-1 items-stretch">
                   <input
                     className="form-input h-12 w-full flex-1 resize-none overflow-hidden rounded-lg border border-[#544d3b] bg-[#27241c] p-3 pr-10 text-base font-normal leading-normal text-white placeholder:text-[#b9b29d]/70 focus:border-primary focus:outline-0 focus:ring-2 focus:ring-primary/40"
                     id="password"
-                    placeholder="Enter your password"
+                    placeholder={t('login.passwordPlaceholder')}
                     type={showPassword ? 'text' : 'password'}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
@@ -80,7 +82,7 @@ export default function LoginPage() {
                   className="text-sm font-normal leading-normal text-[#4D96FF] underline hover:text-primary"
                   href="/auth/forgot-password"
                 >
-                  Forgot Password?
+                  {t('login.forgotPassword')}
                 </Link>
               </div>
 
@@ -88,15 +90,15 @@ export default function LoginPage() {
                 className="flex h-12 min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-primary px-5 text-base font-bold leading-normal tracking-[0.015em] text-[#181611] transition-all hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-[#1E1E1E]"
                 type="submit"
               >
-                <span className="truncate">Login</span>
+                <span className="truncate">{t('common.login')}</span>
               </button>
             </form>
 
             <div className="mt-2 text-center">
               <p className="text-sm text-[#E0E0E0]/80">
-                Don&apos;t have an account?{' '}
+                {t('login.dontHaveAccount')}{' '}
                 <Link className="font-semibold text-[#4D96FF] hover:text-primary" href="/auth/register">
-                  Create an account
+                  {t('login.createAccount')}
                 </Link>
               </p>
             </div>

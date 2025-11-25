@@ -2,8 +2,10 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { useTranslation } from '@/hooks/useTranslation'
 
 export default function RegisterPage() {
+  const { t } = useTranslation()
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
   const [formData, setFormData] = useState({
@@ -27,11 +29,11 @@ export default function RegisterPage() {
     e.preventDefault()
     // Handle registration logic here
     if (formData.password !== formData.confirmPassword) {
-      alert('Şifreler eşleşmiyor!')
+      alert(t('register.passwordMismatch'))
       return
     }
     if (!formData.acceptTerms) {
-      alert('Lütfen şartları kabul edin!')
+      alert(t('register.mustAcceptTerms'))
       return
     }
     console.log('Registration attempt:', formData)
@@ -62,16 +64,16 @@ export default function RegisterPage() {
 
         <main className="w-full rounded-xl bg-[#1E1E1E] p-6 sm:p-8 shadow-[0_0_20px_rgba(255,215,0,0.1)]">
           <div className="mb-6 text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-white">Hesap Oluştur</h2>
-            <p className="mt-2 text-sm text-gray-400">Yeni bir hesap oluşturarak oynamaya başlayın.</p>
+            <h2 className="text-3xl font-bold tracking-tight text-white">{t('register.title')}</h2>
+            <p className="mt-2 text-sm text-gray-400">{t('register.subtitle')}</p>
           </div>
 
           <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
             <label className="flex flex-col">
-              <p className="text-sm font-medium leading-normal text-gray-300 pb-2">Tam Adınız</p>
+              <p className="text-sm font-medium leading-normal text-gray-300 pb-2">{t('register.fullName')}</p>
               <input
                 className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#1E1E1E] focus:ring-[#00F5D4] border border-gray-700 bg-gray-800 h-12 placeholder:text-gray-500 px-4 text-sm font-normal leading-normal"
-                placeholder="Adınızı ve soyadınızı girin"
+                placeholder={t('register.fullNamePlaceholder')}
                 type="text"
                 name="fullName"
                 value={formData.fullName}
@@ -81,10 +83,10 @@ export default function RegisterPage() {
             </label>
 
             <label className="flex flex-col">
-              <p className="text-sm font-medium leading-normal text-gray-300 pb-2">E-posta</p>
+              <p className="text-sm font-medium leading-normal text-gray-300 pb-2">{t('register.email')}</p>
               <input
                 className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#1E1E1E] focus:ring-[#00F5D4] border border-gray-700 bg-gray-800 h-12 placeholder:text-gray-500 px-4 text-sm font-normal leading-normal"
-                placeholder="e-posta@adresiniz.com"
+                placeholder={t('register.emailPlaceholder')}
                 type="email"
                 name="email"
                 value={formData.email}
@@ -94,11 +96,11 @@ export default function RegisterPage() {
             </label>
 
             <label className="flex flex-col">
-              <p className="text-sm font-medium leading-normal text-gray-300 pb-2">Şifre</p>
+              <p className="text-sm font-medium leading-normal text-gray-300 pb-2">{t('register.password')}</p>
               <div className="relative flex w-full flex-1 items-center">
                 <input
                   className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#1E1E1E] focus:ring-[#00F5D4] border border-gray-700 bg-gray-800 h-12 placeholder:text-gray-500 pl-4 pr-10 text-sm font-normal leading-normal"
-                  placeholder="••••••••"
+                  placeholder={t('register.passwordPlaceholder')}
                   type={showPassword ? 'text' : 'password'}
                   name="password"
                   value={formData.password}
@@ -118,11 +120,11 @@ export default function RegisterPage() {
             </label>
 
             <label className="flex flex-col">
-              <p className="text-sm font-medium leading-normal text-gray-300 pb-2">Şifreyi Onayla</p>
+              <p className="text-sm font-medium leading-normal text-gray-300 pb-2">{t('register.confirmPassword')}</p>
               <div className="relative flex w-full flex-1 items-center">
                 <input
                   className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#1E1E1E] focus:ring-[#00F5D4] border border-gray-700 bg-gray-800 h-12 placeholder:text-gray-500 pl-4 pr-10 text-sm font-normal leading-normal"
-                  placeholder="••••••••"
+                  placeholder={t('register.confirmPasswordPlaceholder')}
                   type={showConfirmPassword ? 'text' : 'password'}
                   name="confirmPassword"
                   value={formData.confirmPassword}
@@ -142,7 +144,7 @@ export default function RegisterPage() {
             </label>
 
             <div className="relative flex flex-col">
-              <p className="text-sm font-medium leading-normal text-gray-300 pb-2">Para Birimi</p>
+              <p className="text-sm font-medium leading-normal text-gray-300 pb-2">{t('register.currency')}</p>
               <select
                 className="form-select flex w-full cursor-pointer appearance-none items-center justify-between rounded-lg border border-gray-700 bg-gray-800 px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#1E1E1E] focus:ring-[#00F5D4] h-12"
                 name="currency"
@@ -170,15 +172,15 @@ export default function RegisterPage() {
                 required
               />
               <label className="text-xs text-gray-400" htmlFor="terms-checkbox">
-                18 yaşından büyük olduğumu ve{' '}
+                {t('register.acceptTerms')}{' '}
                 <Link className="font-medium text-[#00BFFF] hover:underline" href="/terms">
-                  Şartlar ve Koşullar
+                  {t('register.terms')}
                 </Link>
-                {' '}ile{' '}
+                {' '}ve{' '}
                 <Link className="font-medium text-[#00BFFF] hover:underline" href="/privacy">
-                  Gizlilik Politikası
+                  {t('register.privacy')}
                 </Link>
-                &apos;nı kabul ediyorum.
+                {' '}{t('register.acceptTermsEnd')}
               </label>
             </div>
 
@@ -186,15 +188,15 @@ export default function RegisterPage() {
               className="mt-4 flex h-12 w-full items-center justify-center rounded-lg bg-primary text-center text-sm font-bold text-black transition-transform hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-[#1E1E1E]"
               type="submit"
             >
-              Hesap Oluştur
+              {t('register.createAccount')}
             </button>
           </form>
 
           <div className="mt-6 text-center">
             <p className="text-sm text-gray-400">
-              Zaten bir hesabınız var mı?{' '}
+              {t('register.alreadyHaveAccount')}{' '}
               <Link className="font-medium text-[#00BFFF] hover:underline" href="/auth/login">
-                Giriş Yap
+                {t('register.login')}
               </Link>
             </p>
           </div>
