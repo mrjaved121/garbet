@@ -178,7 +178,7 @@ export default function RegisterPage() {
                 <Link className="font-medium text-[#00BFFF] hover:underline" href="/privacy">
                   Gizlilik Politikası
                 </Link>
-                'nı kabul ediyorum.
+                &apos;nı kabul ediyorum.
               </label>
             </div>
 
