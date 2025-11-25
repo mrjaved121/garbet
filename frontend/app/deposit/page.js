@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { useTranslation } from '@/hooks/useTranslation'
-import LanguageSwitcher from '@/components/LanguageSwitcher'
+import Navbar from '@/components/Navbar'
 
 export default function DepositPage() {
   const { t } = useTranslation()
@@ -64,36 +64,10 @@ export default function DepositPage() {
 
   return (
     <div className="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden font-display bg-background-light dark:bg-background-dark text-text-light">
+      <Navbar />
       <div className="layout-container flex h-full grow flex-col">
         <div className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40 flex flex-1 justify-center py-5">
           <div className="layout-content-container flex flex-col max-w-6xl flex-1">
-            {/* TopNavBar */}
-            <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-border-dark px-4 sm:px-6 md:px-10 py-4">
-              <div className="flex items-center gap-4">
-                <div className="size-6 text-primary">
-                  <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                    <path clipRule="evenodd" d="M24 4H42V17.3333V30.6667H24V44H6V30.6667V17.3333H24V4Z" fill="currentColor" fillRule="evenodd"></path>
-                  </svg>
-                </div>
-                <Link href="/">
-                  <h2 className="text-white text-xl font-bold leading-tight tracking-[-0.015em]">CasinoBet</h2>
-                </Link>
-              </div>
-              <div className="hidden lg:flex flex-1 justify-center items-center gap-9">
-                <Link href="/slots" className="text-white text-sm font-medium leading-normal hover:text-primary transition-colors">{t('common.slotGames')}</Link>
-                <Link href="/sports" className="text-white text-sm font-medium leading-normal hover:text-primary transition-colors">{t('common.sports')}</Link>
-                <Link href="/promotions" className="text-white text-sm font-medium leading-normal hover:text-primary transition-colors">{t('common.promotions')}</Link>
-              </div>
-              <div className="hidden sm:flex items-center gap-2">
-                <LanguageSwitcher />
-              </div>
-              <div className="flex items-center gap-4">
-                <button className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-surface-dark text-white text-sm font-bold leading-normal tracking-[0.015em] border border-border-dark hover:border-primary/50 transition-colors">
-                  <span className="truncate">Balance: ₺5,430.00</span>
-                </button>
-                <div className="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuD210ygeTjO8mYCDixdXKuwY_6u1Fc690a3IpNFsrpHuSs_1dqdjBV6UiBdHSY_3y1o594_kJxggABJV5vJmDpAvJeOvyL0C_3LAED5UcQGMUw5kzBXoYfT0UsDPZziMnUA7d_h37gsJaccCBzoEP0IezakuPckNOXO-hO7AfECr9WCIm0YrnLb82ixkhkcyH-5mKAUFOKoAPmt6u2CzlyKmjKax2wcmHcHn39-hgHS9hbqCUgDDht0nGiqY8qVJiP4FSjJlVcSJqg")' }}></div>
-              </div>
-            </header>
 
             <main className="flex-grow pt-8 sm:pt-12 pb-12">
               {/* PageHeading */}

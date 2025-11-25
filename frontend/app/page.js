@@ -1,26 +1,12 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 import { useTranslation } from '@/hooks/useTranslation'
-import LanguageSwitcher from '@/components/LanguageSwitcher'
+import Navbar from '@/components/Navbar'
 
 export default function HomePage() {
   const { t } = useTranslation()
-  const [currentTime, setCurrentTime] = useState('17:08:03')
-
-  useEffect(() => {
-    const updateTime = () => {
-      const now = new Date()
-      const hours = String(now.getHours()).padStart(2, '0')
-      const minutes = String(now.getMinutes()).padStart(2, '0')
-      const seconds = String(now.getSeconds()).padStart(2, '0')
-      setCurrentTime(`${hours}:${minutes}:${seconds}`)
-    }
-    updateTime()
-    const interval = setInterval(updateTime, 1000)
-    return () => clearInterval(interval)
-  }, [])
 
   const paymentMethods = [
     { name: 'Papara', logo: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDrUOWIw-W1huRgXhguTyN9rXCVw-1rQqWcmcb5Kb9qURdaMi2B-4k6WdQJlltVW8HJaBz_kBD5l93hKYoeMVgHM13a4EAIEWQDidbhEHah4jXewTtIxb9zZeOIBJ7r0rpQdHTAI8ol0cSKRvx84dYjhDlEBCWIuTfrW0RFQUOSA43iOSOUJhiLTZWqpvdWwg64zg3Q6bWKTouX77aKaOtVhx34KZH9-tcY9KLsLCeen4hAr3fE-b08WysDtEIuApiJ9gr9LLZ5USM', min: '200₺' },
@@ -65,73 +51,7 @@ export default function HomePage() {
       <div className="layout-container flex h-full grow flex-col">
         <div className="flex flex-1 justify-center">
           <div className="layout-content-container flex flex-col w-full max-w-7xl flex-1">
-            {/* Header */}
-            <header className="flex flex-col sticky top-0 z-50 bg-[#151328]/90 backdrop-blur-sm">
-              <div className="flex items-center justify-between whitespace-nowrap px-4 sm:px-6 lg:px-8 py-2">
-                <div className="flex items-center gap-4">
-                  <h2 className="text-white text-2xl font-bold leading-tight tracking-[-0.015em] italic">betsilin</h2>
-                </div>
-                <div className="hidden md:flex items-center gap-2">
-                  <button className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded h-9 px-4 bg-green-500 text-white text-xs font-bold leading-normal tracking-wide hover:bg-green-600 transition-all gap-1">
-                    <span className="material-symbols-outlined text-base">account_balance_wallet</span>
-                    <span className="truncate">DEPOSIT</span>
-                  </button>
-                  <button className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded h-9 px-4 bg-yellow-500 text-black text-xs font-bold leading-normal tracking-wide hover:bg-yellow-600 transition-colors gap-1">
-                    <span className="material-symbols-outlined text-base">star</span>
-                    <span className="truncate">BONUSES</span>
-                  </button>
-                  <button className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded h-9 px-4 bg-[#2b284e] text-white text-xs font-bold leading-normal tracking-wide hover:bg-[#3a376a] transition-colors gap-1">
-                    <span className="material-symbols-outlined text-base">email</span>
-                    <span className="truncate">MESSAGES</span>
-                  </button>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Link href="/auth/login" className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded h-9 px-4 bg-blue-600 text-white text-xs font-bold leading-normal tracking-wide hover:bg-blue-700 transition-all">
-                    <span className="truncate">{t('common.signIn')}</span>
-                  </Link>
-                  <Link href="/auth/register" className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded h-9 px-4 bg-gray-600 text-white text-xs font-bold leading-normal tracking-wide hover:bg-gray-700 transition-colors">
-                    <span className="truncate">{t('common.signUp')}</span>
-                  </Link>
-                  <div className="hidden sm:flex items-center gap-4 pl-2">
-                    <LanguageSwitcher />
-                    <div className="flex items-center gap-1.5 text-white/80 text-xs">
-                      <span className="material-symbols-outlined text-base">schedule</span>
-                      <span>{currentTime}</span>
-                    </div>
-                  </div>
-                  <button className="lg:hidden flex items-center justify-center h-9 w-9 text-white">
-                    <span className="material-symbols-outlined">menu</span>
-                  </button>
-                </div>
-              </div>
-              <nav className="hidden lg:flex items-center justify-center gap-8 border-t border-b border-white/10 px-4 sm:px-6 lg:px-8 bg-[#1f1d37]">
-                <Link href="/promotions" className="secondary-nav-item">
-                  <span className="material-symbols-outlined text-base">military_tech</span> {t('common.promotions')}
-                </Link>
-                <Link href="/live-betting" className="secondary-nav-item active">
-                  <span className="material-symbols-outlined text-base" style={{ fontVariationSettings: "'FILL' 1" }}>bolt</span> {t('common.liveBet')}
-                </Link>
-                <Link href="/sports" className="secondary-nav-item">
-                  <span className="material-symbols-outlined text-base">sports_soccer</span> {t('common.sports')}
-                </Link>
-                <Link href="/slots" className="secondary-nav-item">
-                  <span className="material-symbols-outlined text-base">casino</span> {t('common.slotGames')}
-                </Link>
-                <Link href="/live-casino" className="secondary-nav-item">
-                  <span className="material-symbols-outlined text-base">playing_cards</span> {t('common.liveCasino')}
-                </Link>
-                <a className="secondary-nav-item" href="#">AVI / ZEPPELIN</a>
-                <a className="secondary-nav-item" href="#">
-                  <span className="material-symbols-outlined text-base">live_tv</span> TV GAMES
-                </a>
-                <a className="secondary-nav-item" href="#">
-                  <span className="material-symbols-outlined text-base">emoji_events</span> TOURNAMENTS
-                </a>
-                <a className="secondary-nav-item" href="#">
-                  <span className="material-symbols-outlined text-base">more_horiz</span> More
-                </a>
-              </nav>
-            </header>
+            <Navbar />
 
             <main className="flex-1">
               {/* Hero Banner */}

@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Navbar from '@/components/Navbar'
 
 export default function CrashPage() {
   const [betAmount, setBetAmount] = useState('')
@@ -52,36 +53,7 @@ export default function CrashPage() {
 
   return (
     <div className="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
-      <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-surface px-4 sm:px-6 lg:px-10 py-3 sticky top-0 z-50 bg-background-dark/80 backdrop-blur-sm">
-        <div className="flex items-center gap-4 text-white">
-          <div className="size-6 text-primary">
-            <svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-              <g clipPath="url(#clip0_6_319)">
-                <path d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z"></path>
-              </g>
-              <defs><clipPath id="clip0_6_319"><rect fill="white" height="48" width="48"></rect></clipPath></defs>
-            </svg>
-          </div>
-          <Link href="/">
-            <h2 className="text-white text-lg font-bold leading-tight tracking-[-0.015em]">CasinoPlatform</h2>
-          </Link>
-        </div>
-        <nav className="hidden lg:flex items-center gap-9">
-          <Link href="/sports" className="text-text-secondary hover:text-white text-sm font-medium leading-normal transition-colors">Sports</Link>
-          <Link href="/live-casino" className="text-text-secondary hover:text-white text-sm font-medium leading-normal transition-colors">Live Casino</Link>
-          <Link href="/crash" className="text-primary text-sm font-bold leading-normal">Crash Games</Link>
-          <Link href="/slots" className="text-text-secondary hover:text-white text-sm font-medium leading-normal transition-colors">Slots</Link>
-        </nav>
-        <div className="flex items-center gap-2 sm:gap-4">
-          <button className="hidden sm:flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-background-dark text-sm font-bold leading-normal tracking-[0.015em] hover:bg-yellow-400 transition-colors">
-            <span className="truncate">Deposit</span>
-          </button>
-          <button className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-surface text-text-secondary hover:text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5 transition-colors">
-            <span className="material-symbols-outlined text-xl">notifications</span>
-          </button>
-          <div className="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuCEO5d4gfXmzqHzvqx1I77gWq1vaq_S39Ngo35pSt1kmay_tAWJzMi3YyP_tfSn7jJaPf6XNPDSl-5GvkWKev-qytuXElC6KUhlXKv_H0tm6NK9RB34kWsgaKLDATcXW6rnFEI1CEq8Q_90eMlf-k7xf0ChzAjDkLYxmmtaY7zp5r9Vny3XgbU4hQ9p27X7YlTPoUNexhFkNqycF7TkJnMsJ0FrxmSfJ-xDyVjVv-DtDBGihiuvIh-25JVw-m5VzheeOD5pACrKRCI")' }}></div>
-        </div>
-      </header>
+      <Navbar />
 
       <main className="flex-grow p-4 lg:p-8">
         <div className="grid grid-cols-12 gap-4 lg:gap-6">

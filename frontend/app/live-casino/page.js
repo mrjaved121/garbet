@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Navbar from '@/components/Navbar'
 
 export default function LiveCasinoPage() {
   const [selectedProvider, setSelectedProvider] = useState('Tümü')
@@ -93,47 +94,10 @@ export default function LiveCasinoPage() {
 
   return (
     <div className="relative flex h-auto min-h-screen w-full flex-col bg-[#181611] dark group/design-root overflow-x-hidden" style={{ fontFamily: 'Inter, "Noto Sans", sans-serif' }}>
+      <Navbar />
       <div className="layout-container flex h-full grow flex-col">
         <div className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40 flex flex-1 justify-center py-5">
           <div className="layout-content-container flex flex-col w-full max-w-7xl flex-1">
-            <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#393528] px-4 md:px-10 py-3">
-              <div className="flex items-center gap-4 text-white">
-                <div className="size-6 text-primary">
-                  <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                    <g clipPath="url(#clip0_6_319)">
-                      <path d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z" fill="currentColor"></path>
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_6_319"><rect fill="white" height="48" width="48"></rect></clipPath>
-                    </defs>
-                  </svg>
-                </div>
-                <Link href="/">
-                  <h2 className="text-white text-lg font-bold leading-tight tracking-[-0.015em]">CasinoPlatform</h2>
-                </Link>
-              </div>
-              <div className="hidden md:flex flex-1 justify-end items-center gap-8">
-                <div className="flex items-center gap-9">
-                  <Link href="/sports" className="text-white text-sm font-medium leading-normal hover:text-primary transition-colors">Sports</Link>
-                  <Link href="/slots" className="text-white text-sm font-medium leading-normal hover:text-primary transition-colors">Casino</Link>
-                  <Link href="/live-casino" className="text-primary text-sm font-bold leading-normal">Live Casino</Link>
-                </div>
-                <div className="flex items-center gap-2">
-                  <button className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#f1c84b] text-[#181611] text-sm font-bold leading-normal tracking-[0.015em] hover:bg-yellow-300 transition-colors">
-                    <span className="truncate">Deposit</span>
-                  </button>
-                  <Link href="/auth/login" className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#393528] text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-[#4a4537] transition-colors">
-                    <span className="truncate">Login</span>
-                  </Link>
-                  <div className="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuBQzLU2Z5vWhy1YKLq-88MlLlrWeSIVpp_aymd5ywRhIaY6ZvWoVHBoL4J5eHK9RsPPxMQHK295FUfr5I77wjtm5Sa-POW3SXe-6nQ1lbEKwWWbTZOYk2K4THfu8GFkZ2OlqQl_cnrrcFs2LUbnTHwXXsBTbVFFfemPxjdLR4GUk1eOAHzri2bEDJOhT1YEZcRP-2q9MeTaAcIQEanBgDzkJ-ZivAld0EpzRtYW_IX_Esgo6MItKxDZ0sVc0k-b8t53P32o9ZD_kvg")' }}></div>
-                </div>
-              </div>
-              <div className="md:hidden">
-                <button className="text-white p-2">
-                  <span className="material-symbols-outlined text-3xl">menu</span>
-                </button>
-              </div>
-            </header>
 
             <main className="flex-1">
               <div className="flex flex-wrap justify-between items-center gap-3 p-4">

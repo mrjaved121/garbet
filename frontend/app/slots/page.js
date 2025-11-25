@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Navbar from '@/components/Navbar'
 
 export default function SlotsPage() {
   const [selectedCategory, setSelectedCategory] = useState('Tümü')
@@ -86,54 +87,7 @@ export default function SlotsPage() {
 
   return (
     <div className="relative flex min-h-screen w-full flex-col bg-[#181611]">
-      {/* TopNavBar */}
-      <header className="sticky top-0 z-50 flex items-center justify-center border-b border-solid border-b-[#393528] bg-[#181611]/80 px-4 py-3 backdrop-blur-md sm:px-6 lg:px-8">
-        <div className="flex w-full max-w-7xl items-center justify-between whitespace-nowrap">
-          <div className="flex items-center gap-8">
-            <div className="flex items-center gap-3 text-white">
-              <div className="size-6 shrink-0">
-                <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                  <path clipRule="evenodd" d="M24 4H42V17.3333V30.6667H24V44H6V30.6667V17.3333H24V4Z" fill="currentColor" fillRule="evenodd"></path>
-                </svg>
-              </div>
-              <Link href="/">
-                <h2 className="text-white text-xl font-bold leading-tight tracking-[-0.015em]">CasinoBet</h2>
-              </Link>
-            </div>
-            <nav className="hidden items-center gap-9 lg:flex">
-              <Link href="/sports" className="text-white text-sm font-medium leading-normal hover:text-primary transition-colors">Spor Bahisleri</Link>
-              <Link href="/live-casino" className="text-white text-sm font-medium leading-normal hover:text-primary transition-colors">Canlı Casino</Link>
-              <Link href="/slots" className="text-primary text-sm font-bold leading-normal">Slotlar</Link>
-              <Link href="/promotions" className="text-white text-sm font-medium leading-normal hover:text-primary transition-colors">Promosyonlar</Link>
-            </nav>
-          </div>
-          <div className="flex flex-1 items-center justify-end gap-2 sm:gap-4">
-            <label className="hidden md:flex flex-col min-w-40 !h-10 max-w-64">
-              <div className="flex w-full flex-1 items-stretch rounded-xl h-full">
-                <div className="text-[#b9b29d] flex bg-[#393528] items-center justify-center pl-3 rounded-l-xl">
-                  <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>search</span>
-                </div>
-                <input 
-                  className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-xl text-white focus:outline-0 focus:ring-0 border-none bg-[#393528] focus:border-none h-full placeholder:text-[#b9b29d] pr-4 pl-2 text-sm font-normal leading-normal" 
-                  placeholder="Oyun ara..." 
-                  type="text"
-                />
-              </div>
-            </label>
-            <div className="hidden sm:flex gap-2">
-              <Link href="/auth/login" className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-primary text-[#181611] text-sm font-bold leading-normal tracking-[0.015em] hover:bg-yellow-400 transition-colors">
-                <span className="truncate">Giriş Yap</span>
-              </Link>
-              <Link href="/auth/register" className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#393528] text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-neutral-700 transition-colors">
-                <span className="truncate">Kayıt Ol</span>
-              </Link>
-            </div>
-            <button className="lg:hidden p-2 rounded-xl bg-[#393528]">
-              <span className="material-symbols-outlined">menu</span>
-            </button>
-          </div>
-        </div>
-      </header>
+      <Navbar />
 
       {/* Main Content */}
       <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">

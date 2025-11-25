@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Navbar from '@/components/Navbar'
 
 export default function LiveBettingPage() {
   const [selectedBets, setSelectedBets] = useState([
@@ -54,41 +55,7 @@ export default function LiveBettingPage() {
 
   return (
     <div className="relative min-h-screen w-full bg-background-dark">
-      {/* TopNavBar */}
-      <header className="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-surface/80 bg-background-dark/80 px-4 py-3 backdrop-blur-sm lg:px-10">
-        <div className="flex items-center gap-4">
-          <div className="size-6 text-primary">
-            <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-              <g clipPath="url(#clip0_6_330)">
-                <path clipRule="evenodd" d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z" fill="currentColor" fillRule="evenodd"></path>
-              </g>
-              <defs><clipPath id="clip0_6_330"><rect fill="white" height="48" width="48"></rect></clipPath></defs>
-            </svg>
-          </div>
-          <Link href="/">
-            <h2 className="text-xl font-bold leading-tight tracking-[-0.015em] text-primary-text">BetPlatform</h2>
-          </Link>
-        </div>
-        <nav className="hidden items-center gap-9 lg:flex">
-          <Link href="/sports" className="text-sm font-medium text-secondary-text transition-colors hover:text-primary-text">Spor</Link>
-          <Link href="/live-betting" className="text-sm font-medium text-primary transition-colors hover:text-primary-text">Canlı Bahis</Link>
-          <Link href="/slots" className="text-sm font-medium text-secondary-text transition-colors hover:text-primary-text">Casino</Link>
-          <Link href="/live-casino" className="text-sm font-medium text-secondary-text transition-colors hover:text-primary-text">Canlı Casino</Link>
-          <Link href="/promotions" className="text-sm font-medium text-secondary-text transition-colors hover:text-primary-text">Promosyonlar</Link>
-        </nav>
-        <div className="flex items-center gap-2">
-          <Link href="/auth/register" className="hidden min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-background-dark text-sm font-bold leading-normal tracking-[0.015em] transition-opacity hover:opacity-90 sm:flex">
-            <span className="truncate">Kayıt Ol</span>
-          </Link>
-          <Link href="/auth/login" className="hidden min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-surface text-primary-text text-sm font-bold leading-normal tracking-[0.015em] transition-colors hover:bg-surface/80 sm:flex">
-            <span className="truncate">Giriş Yap</span>
-          </Link>
-          <button className="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-surface text-primary-text transition-colors hover:bg-surface/80">
-            <span className="material-symbols-outlined text-xl">language</span>
-          </button>
-          <div className="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuCh6zslojYoxVh20no0WQg4DjXxcrH_bNPcyH4ijdCo013BS4e96ggG1FRiVZJ0vJAxFb0Uow4DJWIwSg7qexHnwaLhzs3rFD1Hn8WLHU4A5tI8XtGXxz4WqY9DdayW-apPcS0sz_075awkp_YDpI_qMhrhuFMg1TU6P9EPxNAuJpA2VY43d9hTikQvVZ29tlT-h2fj4RLjkMB_zX1Jt2gxOlNEOfTl_s1D_bLi2nq88hABJp4ndNVjW6js9lfm2Q6KT1eqXQWIgm0")' }}></div>
-        </div>
-      </header>
+      <Navbar />
 
       <main className="mx-auto flex w-full max-w-7xl flex-col gap-4 p-4 lg:flex-row lg:gap-8 lg:p-6">
         {/* Main Content */}

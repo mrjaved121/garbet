@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { useTranslation } from '@/hooks/useTranslation'
-import LanguageSwitcher from '@/components/LanguageSwitcher'
+import Navbar from '@/components/Navbar'
 
 export default function WithdrawPage() {
   const { t } = useTranslation()
@@ -65,41 +65,7 @@ export default function WithdrawPage() {
 
   return (
     <div className="relative flex min-h-screen w-full flex-col bg-background-dark font-display text-[#EAEAEA]">
-      {/* TopNavBar */}
-      <header className="sticky top-0 z-50 border-b border-solid border-white/10 bg-background-dark/80 backdrop-blur-sm">
-        <div className="container mx-auto flex items-center justify-between whitespace-nowrap px-4 py-3 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-4">
-            <div className="size-6 text-primary">
-              <svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                <g clipPath="url(#clip0_6_319)">
-                  <path d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z"></path>
-                </g>
-                <defs>
-                  <clipPath id="clip0_6_319"><rect fill="white" height="48" width="48"></rect></clipPath>
-                </defs>
-              </svg>
-            </div>
-            <Link href="/">
-              <h2 className="text-white text-lg font-bold leading-tight tracking-[-0.015em]">CasinoPlatform</h2>
-            </Link>
-          </div>
-          <nav className="hidden items-center gap-9 lg:flex">
-            <Link href="/sports" className="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors">{t('common.sports')}</Link>
-            <Link href="/live-casino" className="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors">{t('common.liveCasino')}</Link>
-            <Link href="/promotions" className="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors">{t('common.promotions')}</Link>
-            <Link href="/deposit" className="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors">{t('common.deposit')}</Link>
-          </nav>
-          <div className="hidden sm:flex items-center gap-2">
-            <LanguageSwitcher />
-          </div>
-          <div className="flex flex-1 items-center justify-end gap-4">
-            <button className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-black text-sm font-bold leading-normal tracking-[0.015em] transition-transform hover:scale-105">
-              <span className="truncate">Bakiye: 5,400 ₺</span>
-            </button>
-            <div className="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuBbCyORcr1EI5j-4KwaTekYTZLcs5uGemmQnFL7JzlmuYCEjgp6q7FFYnUsfg1sxJ4OqlKGxkhAHuvjM4QheKL-RdxeIwVXV0pDJdCcBHpmdsp1mzaPcEm7VA1RskRxzCQkKXHpismmTszvh38JZYTxtA0IgItT_c3TE0V4BJ8aA1Lxsa_k6_YqnBlrkIfjmEQOodwjoH603ylMQzX7Bfq_wpcOdMFTGNTo4LQL6oo2SKzBKeeqjB0sXIkc7wGdGlkcW6KYjf4eUac")' }}></div>
-          </div>
-        </div>
-      </header>
+      <Navbar />
 
       {/* Main Content */}
       <main className="flex-grow">

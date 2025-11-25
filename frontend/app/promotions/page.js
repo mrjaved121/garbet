@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Navbar from '@/components/Navbar'
 
 export default function PromotionsPage() {
   const [selectedFilter, setSelectedFilter] = useState('All')
@@ -97,33 +98,8 @@ export default function PromotionsPage() {
 
   return (
     <div className="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+      <Navbar />
       <div className="layout-container flex h-full grow flex-col">
-        <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-white/10 px-4 py-4 md:px-8 lg:px-16 xl:px-24">
-          <div className="flex items-center gap-4 text-white">
-            <div className="size-6 text-primary">
-              <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                <path clipRule="evenodd" d="M24 4H42V17.3333V30.6667H24V44H6V30.6667V17.3333H24V4Z" fill="currentColor" fillRule="evenodd"></path>
-              </svg>
-            </div>
-            <Link href="/">
-              <h2 className="text-white text-xl font-bold leading-tight tracking-[-0.015em]">CasinoBet</h2>
-            </Link>
-          </div>
-          <nav className="hidden items-center gap-8 md:flex">
-            <Link href="/sports" className="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors">Sports</Link>
-            <Link href="/slots" className="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors">Casino</Link>
-            <Link href="/live-casino" className="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors">Live Casino</Link>
-            <Link href="/promotions" className="text-primary text-sm font-bold leading-normal">Promotions</Link>
-          </nav>
-          <div className="flex items-center gap-2">
-            <Link href="/auth/login" className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary/20 text-primary hover:bg-primary/30 text-sm font-bold leading-normal tracking-[0.015em] transition-colors">
-              <span className="truncate">Login</span>
-            </Link>
-            <Link href="/auth/register" className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-background-dark hover:bg-yellow-400 text-sm font-bold leading-normal tracking-[0.015em] transition-colors">
-              <span className="truncate">Sign Up</span>
-            </Link>
-          </div>
-        </header>
 
         <main className="flex-1 px-4 py-8 md:px-8 lg:px-16 xl:px-24">
           <div className="mx-auto flex max-w-7xl flex-col gap-8">

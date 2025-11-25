@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Navbar from '@/components/Navbar'
 
 export default function SportsPage() {
   const [dateFilter, setDateFilter] = useState('Today')
@@ -40,41 +41,7 @@ export default function SportsPage() {
 
   return (
     <div className="relative flex h-auto min-h-screen w-full flex-col bg-background-dark">
-      {/* Top Navigation Bar */}
-      <header className="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-border-color bg-background-dark/80 px-4 py-3 backdrop-blur-sm sm:px-6 lg:px-8">
-        <div className="flex items-center gap-4">
-          <div className="size-6 text-primary">
-            <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-              <g clipPath="url(#clip0_6_330)">
-                <path clipRule="evenodd" d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z" fill="currentColor" fillRule="evenodd"></path>
-              </g>
-              <defs>
-                <clipPath id="clip0_6_330"><rect fill="white" height="48" width="48"></rect></clipPath>
-              </defs>
-            </svg>
-          </div>
-          <Link href="/">
-            <h2 className="font-heading text-xl font-bold tracking-tighter text-white">BetPlatform</h2>
-          </Link>
-        </div>
-        <nav className="hidden items-center gap-8 lg:flex">
-          <Link href="/slots" className="text-sm font-medium leading-normal text-text-secondary hover:text-white">Casino</Link>
-          <Link href="/live-betting" className="text-sm font-medium leading-normal text-text-secondary hover:text-white">Live</Link>
-          <Link href="/sports" className="text-sm font-medium leading-normal text-primary">Sports</Link>
-        </nav>
-        <div className="flex items-center gap-3">
-          <button className="flex min-w-[90px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-background-dark text-sm font-bold leading-normal tracking-wide transition-transform hover:scale-105">
-            <span className="truncate">Deposit</span>
-          </button>
-          <button className="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-surface text-text-secondary hover:text-white">
-            <span className="material-symbols-outlined text-xl">notifications</span>
-          </button>
-          <div className="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuA-LkyOn9qKG_kiE6SVe4ffDOwQocMpVQPB6xb729zUmPd23Sb-KsKwMyXCn_dGZbMqorFts5N198yKvhIHmlm4DZTzKVzqvi6Po3P4vlg7Vitat8jJSRKF_hZwJpwhYo-GNmP_9pru_i_CIBctSmVsqMWoHT8Y5xxkdoCg0bevHgXaP7zPiHn6C8PeF7jgjJgEL6lnRbBf-PpDFC3tgmUTxxkm-pw_2TxBClOLVN1WQ_Eh03t8TCXpTnzTF42IRb_g0CWool1IK0o")' }}></div>
-          <button className="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-surface text-text-secondary hover:text-white lg:hidden">
-            <span className="material-symbols-outlined text-2xl">menu</span>
-          </button>
-        </div>
-      </header>
+      <Navbar />
 
       {/* Main Content Layout */}
       <div className="mx-auto w-full max-w-screen-2xl p-4 sm:p-6 lg:p-8">
