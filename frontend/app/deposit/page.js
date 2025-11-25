@@ -131,18 +131,19 @@ export default function DepositPage() {
                     </div>
 
                     <div className="mt-6">
-                      <label className="block text-sm font-medium text-text-light mb-2" htmlFor="amount">{t('common.amount')}</label>
+                      <label className="block text-sm font-medium text-white mb-2" htmlFor="amount">{t('common.amount')}</label>
                       <div className="relative">
                         <input
-                          className="w-full bg-background-dark border-border-dark text-white rounded-lg h-14 pl-12 text-lg focus:ring-primary focus:border-primary"
+                          className="w-full h-12 rounded-lg border border-[#3a3a3a] bg-[#2a2a2a] text-white pl-12 pr-4 text-base font-normal leading-normal placeholder:text-gray-500 transition-all focus:border-primary focus:bg-[#2f2f2f] focus:outline-none focus:ring-2 focus:ring-primary/20"
                           id="amount"
                           name="amount"
                           placeholder="0.00"
                           type="text"
                           value={amount}
                           onChange={(e) => setAmount(e.target.value)}
+                          aria-required="true"
                         />
-                        <span className="absolute left-4 top-1/2 -translate-y-1/2 text-lg text-text-dark">₺</span>
+                        <span className="absolute left-4 top-1/2 -translate-y-1/2 text-base text-gray-500">₺</span>
                       </div>
                     </div>
 

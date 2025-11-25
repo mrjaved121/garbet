@@ -34,41 +34,44 @@ export default function LoginPage() {
               <p className="mt-1 text-sm text-[#E0E0E0]/60">{t('login.subtitle')}</p>
             </div>
 
-            <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+            <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
               <div className="flex flex-col">
-                <label className="pb-2 text-sm font-medium leading-normal text-[#E0E0E0]" htmlFor="email">
+                <label className="mb-2 text-sm font-medium leading-normal text-white" htmlFor="email">
                   {t('login.email')}
                 </label>
                 <input
-                  className="form-input h-12 w-full flex-1 resize-none overflow-hidden rounded-lg border border-[#544d3b] bg-[#27241c] p-3 text-base font-normal leading-normal text-white placeholder:text-[#b9b29d]/70 focus:border-primary focus:outline-0 focus:ring-2 focus:ring-primary/40"
+                  className="h-12 w-full rounded-lg border border-[#3a3a3a] bg-[#2a2a2a] px-4 text-sm font-normal leading-normal text-white placeholder:text-gray-500 transition-all focus:border-primary focus:bg-[#2f2f2f] focus:outline-none focus:ring-2 focus:ring-primary/20"
                   id="email"
                   placeholder={t('login.emailPlaceholder')}
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
+                  aria-required="true"
                 />
               </div>
 
               <div className="flex flex-col">
-                <label className="pb-2 text-sm font-medium leading-normal text-[#E0E0E0]" htmlFor="password">
+                <label className="mb-2 text-sm font-medium leading-normal text-white" htmlFor="password">
                   {t('login.password')}
                 </label>
-                <div className="relative flex w-full flex-1 items-stretch">
+                <div className="relative flex w-full items-center">
                   <input
-                    className="form-input h-12 w-full flex-1 resize-none overflow-hidden rounded-lg border border-[#544d3b] bg-[#27241c] p-3 pr-10 text-base font-normal leading-normal text-white placeholder:text-[#b9b29d]/70 focus:border-primary focus:outline-0 focus:ring-2 focus:ring-primary/40"
+                    className="h-12 w-full rounded-lg border border-[#3a3a3a] bg-[#2a2a2a] px-4 pr-12 text-sm font-normal leading-normal text-white placeholder:text-gray-500 transition-all focus:border-primary focus:bg-[#2f2f2f] focus:outline-none focus:ring-2 focus:ring-primary/20"
                     id="password"
                     placeholder={t('login.passwordPlaceholder')}
                     type={showPassword ? 'text' : 'password'}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
+                    aria-required="true"
                   />
                   <button
-                    aria-label="Toggle password visibility"
-                    className="absolute inset-y-0 right-0 flex items-center pr-3 text-[#b9b29d] hover:text-white"
+                    aria-label={showPassword ? 'Hide password' : 'Show password'}
+                    className="absolute right-3 flex items-center justify-center text-gray-400 transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 rounded"
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
+                    tabIndex={0}
                   >
                     <span className="material-symbols-outlined text-xl">
                       {showPassword ? 'visibility_off' : 'visibility'}
@@ -79,7 +82,7 @@ export default function LoginPage() {
 
               <div className="text-right">
                 <Link
-                  className="text-sm font-normal leading-normal text-[#4D96FF] underline hover:text-primary"
+                  className="text-sm font-medium text-[#4D96FF] hover:text-primary hover:underline transition-colors"
                   href="/auth/forgot-password"
                 >
                   {t('login.forgotPassword')}
@@ -87,17 +90,17 @@ export default function LoginPage() {
               </div>
 
               <button
-                className="flex h-12 min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-primary px-5 text-base font-bold leading-normal tracking-[0.015em] text-[#181611] transition-all hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-[#1E1E1E]"
+                className="mt-2 flex h-12 w-full items-center justify-center rounded-lg bg-primary text-center text-sm font-bold text-black transition-all hover:brightness-110 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-[#1E1E1E]"
                 type="submit"
               >
-                <span className="truncate">{t('common.login')}</span>
+                {t('common.login')}
               </button>
             </form>
 
-            <div className="mt-2 text-center">
-              <p className="text-sm text-[#E0E0E0]/80">
+            <div className="mt-6 text-center">
+              <p className="text-sm text-gray-400">
                 {t('login.dontHaveAccount')}{' '}
-                <Link className="font-semibold text-[#4D96FF] hover:text-primary" href="/auth/register">
+                <Link className="font-medium text-[#4D96FF] hover:text-primary hover:underline transition-colors" href="/auth/register">
                   {t('login.createAccount')}
                 </Link>
               </p>

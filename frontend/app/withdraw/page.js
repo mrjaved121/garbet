@@ -86,15 +86,16 @@ export default function WithdrawPage() {
                 {/* Amount Input */}
                 <div className="sm:col-span-2">
                   <label className="flex flex-col">
-                    <p className="pb-2 text-base font-medium leading-normal text-white">{t('common.amount')} (₺)</p>
+                    <p className="mb-2 text-sm font-medium leading-normal text-white">{t('common.amount')} (₺)</p>
                     <div className="relative">
-                      <span className="material-symbols-outlined pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-white/50">payments</span>
+                      <span className="material-symbols-outlined pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">payments</span>
                       <input
-                        className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg border border-white/10 bg-background-dark py-3 pl-10 pr-4 text-white placeholder:text-white/40 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                        className="h-12 w-full rounded-lg border border-[#3a3a3a] bg-[#2a2a2a] pl-10 pr-4 text-sm font-normal leading-normal text-white placeholder:text-gray-500 transition-all focus:border-primary focus:bg-[#2f2f2f] focus:outline-none focus:ring-2 focus:ring-primary/20"
                         placeholder={t('common.enterAmount')}
                         type="number"
                         value={amount}
                         onChange={(e) => setAmount(e.target.value)}
+                        aria-required="true"
                       />
                     </div>
                   </label>
@@ -121,35 +122,37 @@ export default function WithdrawPage() {
 
                 {/* Payment Method */}
                 <div>
-                  <label className="block pb-2 text-base font-medium leading-normal text-white" htmlFor="payment-method">{t('common.paymentMethod')}</label>
+                  <label className="block mb-2 text-sm font-medium leading-normal text-white" htmlFor="payment-method">{t('common.paymentMethod')}</label>
                   <div className="relative">
                     <select
-                      className="form-select flex w-full min-w-0 flex-1 appearance-none overflow-hidden rounded-lg border border-white/10 bg-background-dark py-3 pl-4 pr-10 text-white placeholder:text-white/40 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                      className="h-12 w-full appearance-none rounded-lg border border-[#3a3a3a] bg-[#2a2a2a] px-4 pr-10 text-sm font-normal leading-normal text-white transition-all focus:border-primary focus:bg-[#2f2f2f] focus:outline-none focus:ring-2 focus:ring-primary/20"
                       id="payment-method"
                       name="payment-method"
                       value={paymentMethod}
                       onChange={(e) => setPaymentMethod(e.target.value)}
+                      aria-required="true"
                     >
-                      <option>Papara</option>
-                      <option>Banka Transferi</option>
-                      <option>Bitcoin</option>
+                      <option value="Papara" className="bg-[#2a2a2a]">Papara</option>
+                      <option value="Banka Transferi" className="bg-[#2a2a2a]">Banka Transferi</option>
+                      <option value="Bitcoin" className="bg-[#2a2a2a]">Bitcoin</option>
                     </select>
-                    <span className="material-symbols-outlined pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-white/50">expand_more</span>
+                    <span className="material-symbols-outlined pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-xl">expand_more</span>
                   </div>
                 </div>
 
                 {/* Account Details */}
                 <div>
-                  <label className="block pb-2 text-base font-medium leading-normal text-white" htmlFor="account-details">{t('common.accountInfo')} (Papara No)</label>
+                  <label className="block mb-2 text-sm font-medium leading-normal text-white" htmlFor="account-details">{t('common.accountInfo')} (Papara No)</label>
                   <div className="relative">
                     <input
-                      className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg border border-white/10 bg-background-dark py-3 px-4 text-white placeholder:text-white/40 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                      className="h-12 w-full rounded-lg border border-[#3a3a3a] bg-[#2a2a2a] px-4 text-sm font-normal leading-normal text-white placeholder:text-gray-500 transition-all focus:border-primary focus:bg-[#2f2f2f] focus:outline-none focus:ring-2 focus:ring-primary/20"
                       id="account-details"
                       name="account-details"
                       placeholder={t('common.accountInfoPlaceholder')}
                       type="text"
                       value={accountDetails}
                       onChange={(e) => setAccountDetails(e.target.value)}
+                      aria-required="true"
                     />
                   </div>
                 </div>

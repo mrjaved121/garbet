@@ -75,47 +75,57 @@ export default function AdminLoginPage() {
             </div>
           )}
 
-          <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
-            <label className="flex flex-col">
-              <p className="text-sm font-medium leading-normal text-gray-300 pb-2">Email Address</p>
+          <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
+            <div className="flex flex-col">
+              <label className="mb-2 text-sm font-medium leading-normal text-white" htmlFor="admin-email">
+                Email Address
+              </label>
               <input
-                className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#1E1E1E] focus:ring-[#0dccf2] border border-gray-700 bg-gray-800 h-12 placeholder:text-gray-500 px-4 text-sm font-normal leading-normal"
+                id="admin-email"
+                className="h-12 w-full rounded-lg border border-[#3a3a3a] bg-[#2a2a2a] px-4 text-sm font-normal leading-normal text-white placeholder:text-gray-500 transition-all focus:border-primary focus:bg-[#2f2f2f] focus:outline-none focus:ring-2 focus:ring-primary/20 disabled:opacity-50 disabled:cursor-not-allowed"
                 placeholder="admin@casino.com"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 disabled={loading}
+                aria-required="true"
               />
-            </label>
+            </div>
 
-            <label className="flex flex-col">
-              <p className="text-sm font-medium leading-normal text-gray-300 pb-2">Password</p>
-              <div className="relative flex w-full flex-1 items-center">
+            <div className="flex flex-col">
+              <label className="mb-2 text-sm font-medium leading-normal text-white" htmlFor="admin-password">
+                Password
+              </label>
+              <div className="relative flex w-full items-center">
                 <input
-                  className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#1E1E1E] focus:ring-[#0dccf2] border border-gray-700 bg-gray-800 h-12 placeholder:text-gray-500 pl-4 pr-10 text-sm font-normal leading-normal"
+                  id="admin-password"
+                  className="h-12 w-full rounded-lg border border-[#3a3a3a] bg-[#2a2a2a] px-4 pr-12 text-sm font-normal leading-normal text-white placeholder:text-gray-500 transition-all focus:border-primary focus:bg-[#2f2f2f] focus:outline-none focus:ring-2 focus:ring-primary/20 disabled:opacity-50 disabled:cursor-not-allowed"
                   placeholder="••••••••"
                   type={showPassword ? 'text' : 'password'}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
                   disabled={loading}
+                  aria-required="true"
                 />
                 <button
-                  className="absolute right-3 text-gray-400 hover:text-white"
+                  className="absolute right-3 flex items-center justify-center text-gray-400 transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 rounded disabled:opacity-50"
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
                   disabled={loading}
+                  aria-label={showPassword ? 'Hide password' : 'Show password'}
+                  tabIndex={0}
                 >
-                  <span className="material-symbols-outlined !text-xl">
+                  <span className="material-symbols-outlined text-xl">
                     {showPassword ? 'visibility_off' : 'visibility'}
                   </span>
                 </button>
               </div>
-            </label>
+            </div>
 
             <button
-              className="mt-4 flex h-12 w-full items-center justify-center rounded-lg bg-[#0dccf2] text-center text-sm font-bold text-black transition-transform hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-[#0dccf2] focus:ring-offset-2 focus:ring-offset-[#1E1E1E] disabled:opacity-50 disabled:cursor-not-allowed"
+              className="mt-2 flex h-12 w-full items-center justify-center rounded-lg bg-primary text-center text-sm font-bold text-black transition-all hover:brightness-110 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-[#1E1E1E] disabled:opacity-50 disabled:cursor-not-allowed"
               type="submit"
               disabled={loading}
             >
