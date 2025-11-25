@@ -63,16 +63,19 @@ export default function RegisterPage() {
         </header>
 
         <main className="w-full rounded-xl bg-[#1E1E1E] p-6 sm:p-8 shadow-[0_0_20px_rgba(255,215,0,0.1)]">
-          <div className="mb-6 text-center">
+          <div className="mb-8 text-center">
             <h2 className="text-3xl font-bold tracking-tight text-white">{t('register.title')}</h2>
             <p className="mt-2 text-sm text-gray-400">{t('register.subtitle')}</p>
           </div>
 
-          <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
-            <label className="flex flex-col">
-              <p className="text-sm font-medium leading-normal text-gray-300 pb-2">{t('register.fullName')}</p>
+          <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
+            <div className="flex flex-col">
+              <label className="mb-2 text-sm font-medium leading-normal text-white" htmlFor="fullName">
+                {t('register.fullName')}
+              </label>
               <input
-                className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#1E1E1E] focus:ring-[#00F5D4] border border-gray-700 bg-gray-800 h-12 placeholder:text-gray-500 px-4 text-sm font-normal leading-normal"
+                id="fullName"
+                className="h-12 w-full rounded-lg border border-[#3a3a3a] bg-[#2a2a2a] px-4 text-sm font-normal leading-normal text-white placeholder:text-gray-500 transition-all focus:border-primary focus:bg-[#2f2f2f] focus:outline-none focus:ring-2 focus:ring-primary/20"
                 placeholder={t('register.fullNamePlaceholder')}
                 type="text"
                 name="fullName"
@@ -80,12 +83,15 @@ export default function RegisterPage() {
                 onChange={handleChange}
                 required
               />
-            </label>
+            </div>
 
-            <label className="flex flex-col">
-              <p className="text-sm font-medium leading-normal text-gray-300 pb-2">{t('register.email')}</p>
+            <div className="flex flex-col">
+              <label className="mb-2 text-sm font-medium leading-normal text-white" htmlFor="email">
+                {t('register.email')}
+              </label>
               <input
-                className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#1E1E1E] focus:ring-[#00F5D4] border border-gray-700 bg-gray-800 h-12 placeholder:text-gray-500 px-4 text-sm font-normal leading-normal"
+                id="email"
+                className="h-12 w-full rounded-lg border border-[#3a3a3a] bg-[#2a2a2a] px-4 text-sm font-normal leading-normal text-white placeholder:text-gray-500 transition-all focus:border-primary focus:bg-[#2f2f2f] focus:outline-none focus:ring-2 focus:ring-primary/20"
                 placeholder={t('register.emailPlaceholder')}
                 type="email"
                 name="email"
@@ -93,13 +99,16 @@ export default function RegisterPage() {
                 onChange={handleChange}
                 required
               />
-            </label>
+            </div>
 
-            <label className="flex flex-col">
-              <p className="text-sm font-medium leading-normal text-gray-300 pb-2">{t('register.password')}</p>
-              <div className="relative flex w-full flex-1 items-center">
+            <div className="flex flex-col">
+              <label className="mb-2 text-sm font-medium leading-normal text-white" htmlFor="password">
+                {t('register.password')}
+              </label>
+              <div className="relative flex w-full items-center">
                 <input
-                  className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#1E1E1E] focus:ring-[#00F5D4] border border-gray-700 bg-gray-800 h-12 placeholder:text-gray-500 pl-4 pr-10 text-sm font-normal leading-normal"
+                  id="password"
+                  className="h-12 w-full rounded-lg border border-[#3a3a3a] bg-[#2a2a2a] px-4 pr-12 text-sm font-normal leading-normal text-white placeholder:text-gray-500 transition-all focus:border-primary focus:bg-[#2f2f2f] focus:outline-none focus:ring-2 focus:ring-primary/20"
                   placeholder={t('register.passwordPlaceholder')}
                   type={showPassword ? 'text' : 'password'}
                   name="password"
@@ -108,22 +117,26 @@ export default function RegisterPage() {
                   required
                 />
                 <button
-                  className="absolute right-3 text-gray-400 hover:text-white"
+                  className="absolute right-3 flex items-center justify-center text-gray-400 transition-colors hover:text-white focus:outline-none"
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
+                  aria-label={showPassword ? 'Hide password' : 'Show password'}
                 >
-                  <span className="material-symbols-outlined !text-xl">
+                  <span className="material-symbols-outlined text-xl">
                     {showPassword ? 'visibility_off' : 'visibility'}
                   </span>
                 </button>
               </div>
-            </label>
+            </div>
 
-            <label className="flex flex-col">
-              <p className="text-sm font-medium leading-normal text-gray-300 pb-2">{t('register.confirmPassword')}</p>
-              <div className="relative flex w-full flex-1 items-center">
+            <div className="flex flex-col">
+              <label className="mb-2 text-sm font-medium leading-normal text-white" htmlFor="confirmPassword">
+                {t('register.confirmPassword')}
+              </label>
+              <div className="relative flex w-full items-center">
                 <input
-                  className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#1E1E1E] focus:ring-[#00F5D4] border border-gray-700 bg-gray-800 h-12 placeholder:text-gray-500 pl-4 pr-10 text-sm font-normal leading-normal"
+                  id="confirmPassword"
+                  className="h-12 w-full rounded-lg border border-[#3a3a3a] bg-[#2a2a2a] px-4 pr-12 text-sm font-normal leading-normal text-white placeholder:text-gray-500 transition-all focus:border-primary focus:bg-[#2f2f2f] focus:outline-none focus:ring-2 focus:ring-primary/20"
                   placeholder={t('register.confirmPasswordPlaceholder')}
                   type={showConfirmPassword ? 'text' : 'password'}
                   name="confirmPassword"
@@ -132,38 +145,42 @@ export default function RegisterPage() {
                   required
                 />
                 <button
-                  className="absolute right-3 text-gray-400 hover:text-white"
+                  className="absolute right-3 flex items-center justify-center text-gray-400 transition-colors hover:text-white focus:outline-none"
                   type="button"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  aria-label={showConfirmPassword ? 'Hide password' : 'Show password'}
                 >
-                  <span className="material-symbols-outlined !text-xl">
+                  <span className="material-symbols-outlined text-xl">
                     {showConfirmPassword ? 'visibility_off' : 'visibility'}
                   </span>
                 </button>
               </div>
-            </label>
+            </div>
 
             <div className="relative flex flex-col">
-              <p className="text-sm font-medium leading-normal text-gray-300 pb-2">{t('register.currency')}</p>
+              <label className="mb-2 text-sm font-medium leading-normal text-white" htmlFor="currency">
+                {t('register.currency')}
+              </label>
               <select
-                className="form-select flex w-full cursor-pointer appearance-none items-center justify-between rounded-lg border border-gray-700 bg-gray-800 px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#1E1E1E] focus:ring-[#00F5D4] h-12"
+                id="currency"
+                className="h-12 w-full appearance-none rounded-lg border border-[#3a3a3a] bg-[#2a2a2a] px-4 pr-10 text-sm font-normal leading-normal text-white transition-all focus:border-primary focus:bg-[#2f2f2f] focus:outline-none focus:ring-2 focus:ring-primary/20"
                 name="currency"
                 value={formData.currency}
                 onChange={handleChange}
                 required
               >
-                <option value="TRY">TRY (₺)</option>
-                <option value="USD">USD ($)</option>
-                <option value="EUR">EUR (€)</option>
+                <option value="TRY" className="bg-[#2a2a2a]">TRY (₺)</option>
+                <option value="USD" className="bg-[#2a2a2a]">USD ($)</option>
+                <option value="EUR" className="bg-[#2a2a2a]">EUR (€)</option>
               </select>
-              <div className="pointer-events-none absolute right-3 top-10 flex items-center text-gray-400">
-                <span className="material-symbols-outlined">expand_more</span>
+              <div className="pointer-events-none absolute right-3 top-[38px] flex items-center text-gray-400">
+                <span className="material-symbols-outlined text-xl">expand_more</span>
               </div>
             </div>
 
-            <div className="flex items-start gap-2.5 pt-2">
+            <div className="flex items-start gap-3 pt-1">
               <input
-                className="form-checkbox mt-0.5 size-4 shrink-0 cursor-pointer rounded border-gray-600 bg-gray-700 text-primary focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-[#1E1E1E]"
+                className="mt-1 size-4 shrink-0 cursor-pointer rounded border-2 border-[#3a3a3a] bg-[#2a2a2a] text-primary transition-colors checked:border-primary checked:bg-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
                 id="terms-checkbox"
                 type="checkbox"
                 name="acceptTerms"
@@ -171,13 +188,13 @@ export default function RegisterPage() {
                 onChange={handleChange}
                 required
               />
-              <label className="text-xs text-gray-400" htmlFor="terms-checkbox">
+              <label className="text-xs leading-relaxed text-gray-400" htmlFor="terms-checkbox">
                 {t('register.acceptTerms')}{' '}
-                <Link className="font-medium text-[#00BFFF] hover:underline" href="/terms">
+                <Link className="font-medium text-[#4D96FF] hover:text-primary hover:underline transition-colors" href="/terms">
                   {t('register.terms')}
                 </Link>
                 {' '}ve{' '}
-                <Link className="font-medium text-[#00BFFF] hover:underline" href="/privacy">
+                <Link className="font-medium text-[#4D96FF] hover:text-primary hover:underline transition-colors" href="/privacy">
                   {t('register.privacy')}
                 </Link>
                 {' '}{t('register.acceptTermsEnd')}
@@ -185,7 +202,7 @@ export default function RegisterPage() {
             </div>
 
             <button
-              className="mt-4 flex h-12 w-full items-center justify-center rounded-lg bg-primary text-center text-sm font-bold text-black transition-transform hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-[#1E1E1E]"
+              className="mt-2 flex h-12 w-full items-center justify-center rounded-lg bg-primary text-center text-sm font-bold text-black transition-all hover:brightness-110 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-[#1E1E1E]"
               type="submit"
             >
               {t('register.createAccount')}
@@ -195,7 +212,7 @@ export default function RegisterPage() {
           <div className="mt-6 text-center">
             <p className="text-sm text-gray-400">
               {t('register.alreadyHaveAccount')}{' '}
-              <Link className="font-medium text-[#00BFFF] hover:underline" href="/auth/login">
+              <Link className="font-medium text-[#4D96FF] hover:text-primary hover:underline transition-colors" href="/auth/login">
                 {t('register.login')}
               </Link>
             </p>
