@@ -102,8 +102,31 @@ export default function LiveCasinoPage() {
           <div className="layout-content-container flex flex-col w-full max-w-7xl flex-1">
 
             <main className="flex-1">
+              {/* Hero Section */}
+              <div className="px-4 py-8">
+                <div 
+                  className="flex min-h-[280px] flex-col gap-6 bg-cover bg-center bg-no-repeat rounded-xl items-start justify-center p-8 md:p-12 text-left"
+                  style={{
+                    backgroundImage: `linear-gradient(90deg, rgba(21, 19, 40, 0.85) 0%, rgba(21, 19, 40, 0.3) 100%), url("https://images.unsplash.com/photo-1596838132731-3301c3fd4317?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80")`
+                  }}
+                >
+                  <div className="flex flex-col gap-4 max-w-lg">
+                    <h1 className="text-white text-4xl font-black leading-tight tracking-[-0.033em]">{t('liveCasino.title')}</h1>
+                    <p className="text-white/80 text-lg font-medium">{t('liveCasino.subtitle')}</p>
+                    <div className="flex gap-3">
+                      <button className="flex min-w-[120px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary text-background-dark text-sm font-bold leading-normal tracking-[0.015em] hover:bg-yellow-400 transition-all">
+                        <span className="truncate">{t('liveCasino.playNow')}</span>
+                      </button>
+                      <button className="flex min-w-[120px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-white/10 text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-white/20 transition-all border border-white/20">
+                        <span className="truncate">{t('liveCasino.learnMore')}</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <div className="flex flex-wrap justify-between items-center gap-3 p-4">
-                <p className="text-white text-4xl font-black leading-tight tracking-[-0.033em] min-w-72">Canlı Casino</p>
+                <p className="text-white text-2xl font-bold leading-tight tracking-[-0.015em]">{t('liveCasino.browseGames')}</p>
               </div>
 
               <div className="flex flex-col md:flex-row md:items-center gap-4 px-4 py-3">
@@ -217,10 +240,12 @@ export default function LiveCasinoPage() {
                 <div className="col-span-2 text-left md:text-right">
                   <h4 className="font-bold text-white mb-3">Ödeme Yöntemleri</h4>
                   <div className="flex flex-wrap gap-4 justify-start md:justify-end">
-                    <div className="h-8 w-14 bg-gray-600 rounded" data-alt="Visa logo"></div>
-                    <div className="h-8 w-14 bg-gray-600 rounded" data-alt="Mastercard logo"></div>
-                    <div className="h-8 w-14 bg-gray-600 rounded" data-alt="Bitcoin logo"></div>
-                    <div className="h-8 w-14 bg-gray-600 rounded" data-alt="Bank transfer logo"></div>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png" alt="Visa" className="h-8 w-14 object-contain bg-white rounded px-1" />
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png" alt="Mastercard" className="h-8 w-14 object-contain bg-white rounded px-1" />
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/1200px-Bitcoin.svg.png" alt="Bitcoin" className="h-8 w-14 object-contain bg-white rounded px-1" />
+                    <img src="https://cdn-icons-png.flaticon.com/512/2830/2830284.png" alt="Bank Transfer" className="h-8 w-14 object-contain bg-white rounded px-1" />
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/American_Express_logo_%282018%29.svg/1200px-American_Express_logo_%282018%29.svg.png" alt="American Express" className="h-8 w-14 object-contain bg-white rounded px-1" />
+                    <img src="https://cdn.worldvectorlogo.com/logos/paypal-2.svg" alt="PayPal" className="h-8 w-14 object-contain bg-white rounded px-1" />
                   </div>
                 </div>
               </div>

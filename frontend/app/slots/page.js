@@ -93,9 +93,32 @@ export default function SlotsPage() {
 
       {/* Main Content */}
       <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Hero Section */}
+        <div className="mb-8">
+          <div 
+            className="flex min-h-[280px] flex-col gap-6 bg-cover bg-center bg-no-repeat rounded-xl items-start justify-center p-8 md:p-12 text-left"
+            style={{
+              backgroundImage: `linear-gradient(90deg, rgba(24, 22, 17, 0.85) 0%, rgba(24, 22, 17, 0.3) 100%), url("https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80")`
+            }}
+          >
+            <div className="flex flex-col gap-4 max-w-lg">
+              <h1 className="text-white text-4xl font-black leading-tight tracking-[-0.033em]">{t('slots.title')}</h1>
+              <p className="text-white/80 text-lg font-medium">{t('slots.subtitle')}</p>
+              <div className="flex gap-3">
+                <button className="flex min-w-[120px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary text-background-dark text-sm font-bold leading-normal tracking-[0.015em] hover:bg-yellow-400 transition-all">
+                  <span className="truncate">{t('slots.playNow')}</span>
+                </button>
+                <button className="flex min-w-[120px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-white/10 text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-white/20 transition-all border border-white/20">
+                  <span className="truncate">{t('slots.viewAll')}</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Page Heading */}
         <div className="flex flex-wrap justify-between items-center gap-4 mb-6">
-          <h1 className="text-white text-4xl font-black leading-tight tracking-[-0.033em]">Slot Oyunları</h1>
+          <h2 className="text-white text-2xl font-bold leading-tight tracking-[-0.015em]">{t('slots.browseGames')}</h2>
         </div>
 
         {/* Chips / Filters */}

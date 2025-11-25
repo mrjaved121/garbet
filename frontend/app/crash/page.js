@@ -58,6 +58,26 @@ export default function CrashPage() {
       <Navbar />
 
       <main className="flex-grow p-4 lg:p-8">
+        {/* Hero Section */}
+        <div className="mb-8">
+          <div 
+            className="flex min-h-[240px] flex-col gap-6 bg-cover bg-center bg-no-repeat rounded-xl items-start justify-center p-8 md:p-12 text-left"
+            style={{
+              backgroundImage: `linear-gradient(90deg, rgba(26, 26, 46, 0.85) 0%, rgba(26, 26, 46, 0.3) 100%), url("https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80")`
+            }}
+          >
+            <div className="flex flex-col gap-4 max-w-lg">
+              <h1 className="text-white text-4xl font-black leading-tight tracking-[-0.033em]">{t('crash.title')}</h1>
+              <p className="text-white/80 text-lg font-medium">{t('crash.subtitle')}</p>
+              <div className="flex gap-3">
+                <button className="flex min-w-[120px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary text-background-dark text-sm font-bold leading-normal tracking-[0.015em] hover:bg-yellow-400 transition-all">
+                  <span className="truncate">{t('crash.playNow')}</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="grid grid-cols-12 gap-4 lg:gap-6">
           <aside className="col-span-12 lg:col-span-2 order-2 lg:order-1">
             <div className="bg-surface/50 rounded-lg p-3 h-full">
