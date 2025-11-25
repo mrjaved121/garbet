@@ -3,8 +3,9 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import AdminProtectedRoute from '@/components/AdminProtectedRoute'
 
-export default function GameManagement() {
+function GameManagement() {
   const pathname = usePathname()
   const [searchQuery, setSearchQuery] = useState('')
   const [gameTypeFilter, setGameTypeFilter] = useState('Game Type')
@@ -246,6 +247,14 @@ export default function GameManagement() {
         </div>
       </main>
     </div>
+  )
+}
+
+export default function GameManagementPage() {
+  return (
+    <AdminProtectedRoute>
+      <GameManagement />
+    </AdminProtectedRoute>
   )
 }
 

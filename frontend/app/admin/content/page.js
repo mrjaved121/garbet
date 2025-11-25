@@ -3,8 +3,9 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import AdminProtectedRoute from '@/components/AdminProtectedRoute'
 
-export default function ContentManagement() {
+function ContentManagement() {
   const pathname = usePathname()
   const [activeTab, setActiveTab] = useState('banners')
   const [searchQuery, setSearchQuery] = useState('')
@@ -238,6 +239,14 @@ export default function ContentManagement() {
         </main>
       </div>
     </div>
+  )
+}
+
+export default function ContentManagementPage() {
+  return (
+    <AdminProtectedRoute>
+      <ContentManagement />
+    </AdminProtectedRoute>
   )
 }
 

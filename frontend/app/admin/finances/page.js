@@ -3,8 +3,9 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import AdminProtectedRoute from '@/components/AdminProtectedRoute'
 
-export default function DepositsWithdrawals() {
+function DepositsWithdrawals() {
   const pathname = usePathname()
   const [activeTab, setActiveTab] = useState('withdrawals')
   const [searchQuery, setSearchQuery] = useState('')
@@ -364,6 +365,14 @@ export default function DepositsWithdrawals() {
         </div>
       </main>
     </div>
+  )
+}
+
+export default function DepositsWithdrawalsPage() {
+  return (
+    <AdminProtectedRoute>
+      <DepositsWithdrawals />
+    </AdminProtectedRoute>
   )
 }
 

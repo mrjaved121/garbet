@@ -3,8 +3,9 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import AdminProtectedRoute from '@/components/AdminProtectedRoute'
 
-export default function PromotionsManagement() {
+function PromotionsManagement() {
   const pathname = usePathname()
   const [currentPage, setCurrentPage] = useState(1)
   const [searchQuery, setSearchQuery] = useState('')
@@ -290,6 +291,14 @@ export default function PromotionsManagement() {
         </div>
       </main>
     </div>
+  )
+}
+
+export default function PromotionsManagementPage() {
+  return (
+    <AdminProtectedRoute>
+      <PromotionsManagement />
+    </AdminProtectedRoute>
   )
 }
 

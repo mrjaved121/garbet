@@ -2,8 +2,9 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import AdminProtectedRoute from '@/components/AdminProtectedRoute'
 
-export default function AdminDashboard() {
+function AdminDashboard() {
   const pathname = usePathname()
 
   const navItems = [
@@ -12,7 +13,7 @@ export default function AdminDashboard() {
     { id: 'games', label: 'Game Management', icon: 'gamepad', href: '/admin/games' },
     { id: 'betting', label: 'Betting Management', icon: 'sports_soccer', href: '/admin/betting' },
     { id: 'promotions', label: 'Promotions Management', icon: 'campaign', href: '/admin/promotions' },
-    { id: 'transactions', label: 'Deposits & Withdrawals', icon: 'paid', href: '/admin/transactions' },
+    { id: 'finances', label: 'Deposits & Withdrawals', icon: 'paid', href: '/admin/finances' },
     { id: 'content', label: 'Content Management', icon: 'wysiwyg', href: '/admin/content' },
   ]
 
@@ -71,6 +72,19 @@ export default function AdminDashboard() {
             <p className="text-sm font-medium">Settings</p>
           </Link>
 
+          <button
+            onClick={() => {
+              localStorage.removeItem('adminToken')
+              localStorage.removeItem('adminEmail')
+              localStorage.removeItem('isAdmin')
+              window.location.href = '/admin/login'
+            }}
+            className="mt-2 flex w-full items-center gap-3 rounded-lg px-3 py-2 text-gray-300 hover:bg-red-500/20 hover:text-red-400 transition-colors"
+          >
+            <span className="material-symbols-outlined">logout</span>
+            <p className="text-sm font-medium">Logout</p>
+          </button>
+
           <div className="mt-4 flex items-center gap-3 border-t border-white/10 pt-4">
             <div
               className="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
@@ -80,7 +94,9 @@ export default function AdminDashboard() {
             ></div>
             <div className="flex flex-col">
               <h2 className="text-sm font-medium text-white">Admin User</h2>
-              <p className="text-xs text-gray-400">admin@casino.com</p>
+              <p className="text-xs text-gray-400">
+                {typeof window !== 'undefined' ? localStorage.getItem('adminEmail') || 'admin@casino.com' : 'admin@casino.com'}
+              </p>
             </div>
           </div>
         </div>
@@ -252,6 +268,14 @@ export default function AdminDashboard() {
         </div>
       </main>
     </div>
+  )
+}
+
+export default function AdminDashboardPage() {
+  return (
+    <AdminProtectedRoute>
+      <AdminDashboard />
+    </AdminProtectedRoute>
   )
 }
 

@@ -3,8 +3,9 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import AdminProtectedRoute from '@/components/AdminProtectedRoute'
 
-export default function BettingManagement() {
+function BettingManagement() {
   const pathname = usePathname()
   const [searchQuery, setSearchQuery] = useState('')
   const [statusFilter, setStatusFilter] = useState('Status')
@@ -235,6 +236,14 @@ export default function BettingManagement() {
         </div>
       </main>
     </div>
+  )
+}
+
+export default function BettingManagementPage() {
+  return (
+    <AdminProtectedRoute>
+      <BettingManagement />
+    </AdminProtectedRoute>
   )
 }
 

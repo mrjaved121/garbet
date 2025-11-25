@@ -1,7 +1,16 @@
 import { NextResponse } from 'next/server'
 
 export function middleware(request) {
-  // You can add authentication middleware here if needed
+  const { pathname } = request.nextUrl
+
+  // Protect admin routes (except login page)
+  if (pathname.startsWith('/admin') && pathname !== '/admin/login') {
+    // Check for admin authentication in cookies or headers
+    // For client-side auth, we'll handle it in the component
+    // This middleware can be extended to check server-side tokens
+    return NextResponse.next()
+  }
+
   return NextResponse.next()
 }
 

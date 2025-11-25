@@ -3,8 +3,9 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import AdminProtectedRoute from '@/components/AdminProtectedRoute'
 
-export default function UserManagement() {
+function UserManagement() {
   const pathname = usePathname()
   const [currentPage, setCurrentPage] = useState(1)
   const [searchQuery, setSearchQuery] = useState('')
@@ -357,6 +358,14 @@ export default function UserManagement() {
         </div>
       </main>
     </div>
+  )
+}
+
+export default function UserManagementPage() {
+  return (
+    <AdminProtectedRoute>
+      <UserManagement />
+    </AdminProtectedRoute>
   )
 }
 
