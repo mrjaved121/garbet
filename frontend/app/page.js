@@ -226,40 +226,40 @@ export default function HomePage() {
                   <div>
                     <h3 className="font-bold text-white mb-4">HELP</h3>
                     <ul className="space-y-2">
-                      <li><a className="text-sm text-white/70 hover:text-white" href="#">F.A.Q</a></li>
-                      <li><a className="text-sm text-white/70 hover:text-white" href="#">Payment options</a></li>
-                      <li><a className="text-sm text-white/70 hover:text-white" href="#">Contact Us</a></li>
+                      <li><Link className="text-sm text-white/70 hover:text-white" href="/help/faq">F.A.Q</Link></li>
+                      <li><Link className="text-sm text-white/70 hover:text-white" href="/help/payment-options">Payment options</Link></li>
+                      <li><Link className="text-sm text-white/70 hover:text-white" href="/help/contact">Contact Us</Link></li>
                     </ul>
                   </div>
                   <div>
                     <h3 className="font-bold text-white mb-4">ABOUT US</h3>
                     <ul className="space-y-2">
-                      <li><a className="text-sm text-white/70 hover:text-white" href="#">General Bonus Rules</a></li>
-                      <li><a className="text-sm text-white/70 hover:text-white" href="#">Responsible Gaming</a></li>
-                      <li><a className="text-sm text-white/70 hover:text-white" href="#">Privacy Policy</a></li>
+                      <li><Link className="text-sm text-white/70 hover:text-white" href="/about/bonus-rules">General Bonus Rules</Link></li>
+                      <li><Link className="text-sm text-white/70 hover:text-white" href="/about/responsible-gaming">Responsible Gaming</Link></li>
+                      <li><Link className="text-sm text-white/70 hover:text-white" href="/about/privacy-policy">Privacy Policy</Link></li>
                     </ul>
                   </div>
                   <div>
                     <h3 className="font-bold text-white mb-4">TERMS AND CONDITIONS</h3>
                     <ul className="space-y-2">
-                      <li><a className="text-sm text-white/70 hover:text-white" href="#">General Terms and Conditions</a></li>
-                      <li><a className="text-sm text-white/70 hover:text-white" href="#">Sports Betting Rules</a></li>
+                      <li><Link className="text-sm text-white/70 hover:text-white" href="/terms/general">General Terms and Conditions</Link></li>
+                      <li><Link className="text-sm text-white/70 hover:text-white" href="/terms/sports-betting">Sports Betting Rules</Link></li>
                     </ul>
                   </div>
                   <div>
                     <h3 className="font-bold text-white mb-4">STATISTICS</h3>
                     <ul className="space-y-2">
-                      <li><a className="text-sm text-white/70 hover:text-white" href="#">Results</a></li>
-                      <li><a className="text-sm text-white/70 hover:text-white" href="#">Statistics</a></li>
+                      <li><Link className="text-sm text-white/70 hover:text-white" href="/stats/results">Results</Link></li>
+                      <li><Link className="text-sm text-white/70 hover:text-white" href="/stats/statistics">Statistics</Link></li>
                     </ul>
                   </div>
                   <div>
                     <h3 className="font-bold text-white mb-4">PROMOTIONS</h3>
                     <ul className="space-y-2">
-                      <li><a className="text-sm text-white/70 hover:text-white" href="#">Sport Bonus</a></li>
-                      <li><a className="text-sm text-white/70 hover:text-white" href="#">Casino Bonus</a></li>
-                      <li><a className="text-sm text-white/70 hover:text-white" href="#">Free Spin Bonus</a></li>
-                      <li><a className="text-sm text-white/70 hover:text-white" href="#">General Bonus</a></li>
+                      <li><Link className="text-sm text-white/70 hover:text-white" href="/promotions?category=sports">Sport Bonus</Link></li>
+                      <li><Link className="text-sm text-white/70 hover:text-white" href="/promotions?category=casino">Casino Bonus</Link></li>
+                      <li><Link className="text-sm text-white/70 hover:text-white" href="/promotions?category=freespin">Free Spin Bonus</Link></li>
+                      <li><Link className="text-sm text-white/70 hover:text-white" href="/promotions?category=general">General Bonus</Link></li>
                     </ul>
                   </div>
                 </div>
@@ -281,10 +281,10 @@ export default function HomePage() {
                     <img alt="Aninda Papara Logo" className="h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrUOWIw-W1huRgXhguTyN9rXCVw-1rQqWcmcb5Kb9qURdaMi2B-4k6WdQJlltVW8HJaBz_kBD5l93hKYoeMVgHM13a4EAIEWQDidbhEHah4jXewTtIxb9zZeOIBJ7r0rpQdHTAI8ol0cSKRvx84dYjhDlEBCWIuTfrW0RFQUOSA43iOSOUJhiLTZWqpvdWwg64zg3Q6bWKTouX77aKaOtVhx34KZH9-tcY9KLsLCeen4hAr3fE-b08WysDtEIuApiJ9gr9LLZ5USM" />
                     <img alt="Tosla Logo" className="h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPXSfIOH2zDcB7mCKHsxEv2BqCSqiSAt9_dfPw0cDd5c-zBHS8KCKOetJL2qg-DOZgoXz7_UuMNf3YQj8vquRCHLk5XP_6-PsSJawl2-gOd5Le_-NizI_uNGSS6SWPbGnB5zh2xm4sCp2KwTVwnSEE8ytIkWZaQNwFlf5ScG9vgymq4RVKzpdowc0sTSJ4IyddWme_fTE4m2iu5-Jg4rzgK58OQM8Ck9ZqyBRuyIMGFHEVwb0TvRtwmyFAQ2eFoxpqX1eBxwX5xBk" />
                     <img alt="RocketPay Logo" className="h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBv96O1SbNqWATvQvL9l61h0u8wOp57jNAjFSVQAFYTrTo2HZqp6TzeA-RsvY9IBMO2jmezGHNDg0r0UBGKTozMLIkXQZo4k89DDK4R925SzIBZoX7IFIfWPM9y85U-DzzJHmvdJSwsq4XgxZ5_FpWKPD-vhK4WIz3UbvBrkOCVke5Wp8jlFJ9JdF_vAvWuMMG1OIrluFqn59xjqYgcApwSTwURRkPJmbWN1HEunMVTTwljV0qeTacLthvGA5ZeesL-OomL8hHzrcs" />
-                  </div>
-                </div>
+        </div>
+      </div>
               </footer>
-            </main>
+    </main>
           </div>
         </div>
       </div>

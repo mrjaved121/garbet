@@ -112,15 +112,24 @@ export default function Navbar() {
         >
           <span className="material-symbols-outlined text-base" style={{ fontVariationSettings: isActive('/crash') ? "'FILL' 1" : "'FILL' 0" }}>trending_up</span> {t('common.crash')}
         </Link>
-        <a className="secondary-nav-item" href="#">
-          <span className="material-symbols-outlined text-base">live_tv</span> {t('common.tvGames')}
-        </a>
-        <a className="secondary-nav-item" href="#">
-          <span className="material-symbols-outlined text-base">emoji_events</span> {t('common.tournaments')}
-        </a>
-        <a className="secondary-nav-item" href="#">
-          <span className="material-symbols-outlined text-base">more_horiz</span> {t('common.more')}
-        </a>
+        <Link 
+          href="/tv-games" 
+          className={`secondary-nav-item ${isActive('/tv-games') ? 'active' : ''}`}
+        >
+          <span className="material-symbols-outlined text-base" style={{ fontVariationSettings: isActive('/tv-games') ? "'FILL' 1" : "'FILL' 0" }}>live_tv</span> {t('common.tvGames')}
+        </Link>
+        <Link 
+          href="/tournaments" 
+          className={`secondary-nav-item ${isActive('/tournaments') ? 'active' : ''}`}
+        >
+          <span className="material-symbols-outlined text-base" style={{ fontVariationSettings: isActive('/tournaments') ? "'FILL' 1" : "'FILL' 0" }}>emoji_events</span> {t('common.tournaments')}
+        </Link>
+        <Link 
+          href="/more" 
+          className={`secondary-nav-item ${isActive('/more') ? 'active' : ''}`}
+        >
+          <span className="material-symbols-outlined text-base" style={{ fontVariationSettings: isActive('/more') ? "'FILL' 1" : "'FILL' 0" }}>more_horiz</span> {t('common.more')}
+        </Link>
       </nav>
     </header>
   )

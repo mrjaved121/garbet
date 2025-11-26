@@ -114,7 +114,16 @@
     "totalOdds": "Total Odds",
     "totalStake": "Total Stake",
     "potentialWinnings": "Potential Winnings",
-    "placeBet": "Place Bet"
+    "placeBet": "Place Bet",
+    "football": "Football",
+    "basketball": "Basketball",
+    "tennis": "Tennis", 
+    "turkey": "Turkey",
+    "england": "England",
+    "spain": "Spain",
+    "superLig": "Super League",
+    "breadcrumbSports": "Sports",
+    "breadcrumbFootball": "Football"
   },
   "slots": {
     "title": "Slot Games",
@@ -125,6 +134,8 @@
     "popular": "Popular",
     "new": "New",
     "jackpot": "Jackpot",
+    "trending": "Trending",
+    "live": "Live",
     "highVolatility": "High Volatility",
     "megaways": "Megaways",
     "play": "Play",
@@ -133,7 +144,13 @@
     "browseGames": "Browse Games",
     "sportsBetting": "Sports Betting",
     "liveCasinoNav": "Live Casino",
-    "slotsNav": "Slots"
+    "slotsNav": "Slots",
+    "tournaments": "Tournaments",
+    "dailyJackpot": "Daily Jackpot",
+    "mustBeWonToday": "Must be won today!",
+    "bountyHunter": "Bounty Hunter",
+    "upTo10000x": "Up to 10000X",
+    "winningsAwait": "Winnings Await You!"
   },
   "liveCasino": {
     "title": "Live Casino",

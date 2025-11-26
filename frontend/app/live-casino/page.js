@@ -224,17 +224,17 @@ export default function LiveCasinoPage() {
                 <div className="text-left">
                   <h4 className="font-bold text-white mb-3">Hakkımızda</h4>
                   <ul className="space-y-2 text-sm">
-                    <li><a className="hover:text-primary" href="#">Şartlar &amp; Koşullar</a></li>
-                    <li><a className="hover:text-primary" href="#">Gizlilik Politikası</a></li>
-                    <li><a className="hover:text-primary" href="#">Sorumlu Oyun</a></li>
+                    <li><Link className="hover:text-primary" href="/terms/general">Şartlar &amp; Koşullar</Link></li>
+                    <li><Link className="hover:text-primary" href="/about/privacy-policy">Gizlilik Politikası</Link></li>
+                    <li><Link className="hover:text-primary" href="/about/responsible-gaming">Sorumlu Oyun</Link></li>
                   </ul>
                 </div>
                 <div className="text-left">
                   <h4 className="font-bold text-white mb-3">Yardım</h4>
                   <ul className="space-y-2 text-sm">
-                    <li><a className="hover:text-primary" href="#">Canlı Destek</a></li>
-                    <li><a className="hover:text-primary" href="#">SSS</a></li>
-                    <li><a className="hover:text-primary" href="#">Bize Ulaşın</a></li>
+                    <li><Link className="hover:text-primary" href="/help/live-support">Canlı Destek</Link></li>
+                    <li><Link className="hover:text-primary" href="/help/faq">SSS</Link></li>
+                    <li><Link className="hover:text-primary" href="/help/contact">Bize Ulaşın</Link></li>
                   </ul>
                 </div>
                 <div className="col-span-2 text-left md:text-right">

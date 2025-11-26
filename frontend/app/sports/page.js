@@ -95,30 +95,36 @@ export default function SportsPage() {
               <div className="flex flex-col">
                 <details className="flex flex-col border-t border-t-border-color py-2 group" open>
                   <summary className="flex cursor-pointer items-center justify-between gap-6 py-2">
-                    <p className="text-sm font-medium leading-normal text-text-primary">Football</p>
+                    <p className="text-sm font-medium leading-normal text-text-primary">{t('sports.football')}</p>
                     <span className="material-symbols-outlined text-text-secondary group-open:rotate-180 transition-transform">expand_more</span>
                   </summary>
                   <div className="flex flex-col gap-1 pl-4 pb-2">
-                    <a className="text-sm font-normal leading-normal text-accent-blue hover:underline" href="#">Turkey</a>
-                    <a className="text-sm font-normal leading-normal text-text-secondary hover:text-white" href="#">England</a>
-                    <a className="text-sm font-normal leading-normal text-text-secondary hover:text-white" href="#">Spain</a>
+                    <Link className="text-sm font-normal leading-normal text-accent-blue hover:underline" href="/sports?country=turkey">{t('sports.turkey')}</Link>
+                    <Link className="text-sm font-normal leading-normal text-text-secondary hover:text-white" href="/sports?country=england">{t('sports.england')}</Link>
+                    <Link className="text-sm font-normal leading-normal text-text-secondary hover:text-white" href="/sports?country=spain">{t('sports.spain')}</Link>
                   </div>
                 </details>
 
                 <details className="flex flex-col border-t border-t-border-color py-2 group">
                   <summary className="flex cursor-pointer items-center justify-between gap-6 py-2">
-                    <p className="text-sm font-medium leading-normal text-text-primary">Basketball</p>
+                    <p className="text-sm font-medium leading-normal text-text-primary">{t('sports.basketball')}</p>
                     <span className="material-symbols-outlined text-text-secondary group-open:rotate-180 transition-transform">expand_more</span>
                   </summary>
-                  <p className="text-text-secondary text-sm font-normal leading-normal pb-2 pl-4">Leagues for Basketball will be shown here.</p>
+                  <div className="flex flex-col gap-1 pl-4 pb-2">
+                    <Link className="text-sm font-normal leading-normal text-text-secondary hover:text-white" href="/sports?sport=basketball&country=turkey">{t('sports.turkey')}</Link>
+                    <Link className="text-sm font-normal leading-normal text-text-secondary hover:text-white" href="/sports?sport=basketball&country=usa">USA</Link>
+                  </div>
                 </details>
 
                 <details className="flex flex-col border-t border-t-border-color py-2 group">
                   <summary className="flex cursor-pointer items-center justify-between gap-6 py-2">
-                    <p className="text-sm font-medium leading-normal text-text-primary">Tennis</p>
+                    <p className="text-sm font-medium leading-normal text-text-primary">{t('sports.tennis')}</p>
                     <span className="material-symbols-outlined text-text-secondary group-open:rotate-180 transition-transform">expand_more</span>
                   </summary>
-                  <p className="text-text-secondary text-sm font-normal leading-normal pb-2 pl-4">Leagues for Tennis will be shown here.</p>
+                  <div className="flex flex-col gap-1 pl-4 pb-2">
+                    <Link className="text-sm font-normal leading-normal text-text-secondary hover:text-white" href="/sports?sport=tennis">ATP Tour</Link>
+                    <Link className="text-sm font-normal leading-normal text-text-secondary hover:text-white" href="/sports?sport=tennis&tour=wta">WTA Tour</Link>
+                  </div>
                 </details>
               </div>
             </div>
@@ -128,7 +134,7 @@ export default function SportsPage() {
           <main className="col-span-12 lg:col-span-6 flex flex-col gap-6">
             {/* Breadcrumbs & Sort */}
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-              <p className="text-xs text-text-secondary">Sports &gt; Football &gt; <span className="text-text-primary">Turkey &gt; Süper Lig</span></p>
+              <p className="text-xs text-text-secondary">{t('sports.breadcrumbSports')} &gt; {t('sports.breadcrumbFootball')} &gt; <span className="text-text-primary">{t('sports.turkey')} &gt; {t('sports.superLig')}</span></p>
               <div className="flex items-center gap-2 text-sm">
                 <span className="text-text-secondary">{t('sports.sortBy')}</span>
                 <button 
@@ -148,16 +154,16 @@ export default function SportsPage() {
 
             {/* League Section */}
             <div className="flex flex-col gap-4">
-              <h3 className="font-heading text-lg font-semibold text-white">Turkey - Süper Lig</h3>
+              <h3 className="font-heading text-lg font-semibold text-white">{t('sports.turkey')} - {t('sports.superLig')}</h3>
 
               {matches.map((match) => (
                 <div key={match.id} className="flex flex-col gap-3 rounded-lg bg-surface p-4 shadow-lg shadow-black/20">
                   <div className="flex justify-between items-center text-xs text-text-secondary">
                     <span>{match.date}</span>
-                    <a className="flex items-center gap-1 text-accent-blue hover:underline" href="#">
+                    <Link className="flex items-center gap-1 text-accent-blue hover:underline" href={`/sports/match/${match.id}`}>
                       <span>+{match.moreOptions}</span>
                       <span className="material-symbols-outlined !text-sm">chevron_right</span>
-                    </a>
+                    </Link>
                   </div>
                   <div className="flex flex-col gap-3">
                     {match.teams.map((team, index) => (
