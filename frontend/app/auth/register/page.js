@@ -3,17 +3,20 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { useTranslation } from '@/hooks/useTranslation'
+import { useRouter } from 'next/navigation'
 
 export default function RegisterPage() {
   const { t } = useTranslation()
+  const router = useRouter()
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const [formData, setFormData] = useState({
-    fullName: '',
+    name: '',
     email: '',
     password: '',
     confirmPassword: '',
-    currency: 'TRY',
+    currency: 'USD',
     acceptTerms: false
   })
 
@@ -25,18 +28,86 @@ export default function RegisterPage() {
     }))
   }
 
-  const handleSubmit = (e) => {
+  const handleRegistration = async (registrationData) => {
+    setIsLoading(true)
+    try {
+      const response = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(registrationData),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        // Registration successful
+        alert('Registration successful! Please login.')
+        router.push('/auth/login')
+      } else {
+        // Registration failed
+        alert(data.message || 'Registration failed. Please try again.')
+      }
+    } catch (error) {
+      console.error('Registration error:', error)
+      alert('Network error. Please check your connection and try again.')
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Handle registration logic here
+    
+    // Validation matching backend requirements
+    if (!formData.name.trim()) {
+      alert('Please add a name')
+      return
+    }
+    
+    if (!formData.email.trim()) {
+      alert('Please add an email')
+      return
+    }
+    
+    // Email validation matching backend regex
+    const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+    if (!emailRegex.test(formData.email)) {
+      alert('Please add a valid email')
+      return
+    }
+    
+    if (!formData.password) {
+      alert('Please add a password')
+      return
+    }
+    
+    if (formData.password.length < 6) {
+      alert('Password must be at least 6 characters long')
+      return
+    }
+    
     if (formData.password !== formData.confirmPassword) {
       alert(t('register.passwordMismatch'))
       return
     }
+    
     if (!formData.acceptTerms) {
       alert(t('register.mustAcceptTerms'))
       return
     }
-    console.log('Registration attempt:', formData)
+    
+    // Prepare data for backend (remove confirmPassword and acceptTerms)
+    const registrationData = {
+      name: formData.name.trim(),
+      email: formData.email.toLowerCase().trim(),
+      password: formData.password,
+      currency: formData.currency
+    }
+    
+    // Send registration data to backend
+    await handleRegistration(registrationData)
   }
 
   return (
@@ -70,18 +141,19 @@ export default function RegisterPage() {
 
           <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
             <div className="flex flex-col">
-              <label className="mb-2 text-sm font-medium leading-normal text-white" htmlFor="fullName">
+              <label className="mb-2 text-sm font-medium leading-normal text-white" htmlFor="name">
                 {t('register.fullName')}
               </label>
               <input
-                id="fullName"
+                id="name"
                 className="h-12 w-full rounded-lg border border-[#3a3a3a] bg-[#2a2a2a] px-4 text-sm font-normal leading-normal text-white placeholder:text-gray-500 transition-all focus:border-primary focus:bg-[#2f2f2f] focus:outline-none focus:ring-2 focus:ring-primary/20"
                 placeholder={t('register.fullNamePlaceholder')}
                 type="text"
-                name="fullName"
-                value={formData.fullName}
+                name="name"
+                value={formData.name}
                 onChange={handleChange}
                 required
+                minLength={1}
               />
             </div>
 
@@ -115,6 +187,7 @@ export default function RegisterPage() {
                   value={formData.password}
                   onChange={handleChange}
                   required
+                  minLength={6}
                 />
                 <button
                   className="absolute right-3 flex items-center justify-center text-gray-400 transition-colors hover:text-white focus:outline-none"
@@ -169,9 +242,9 @@ export default function RegisterPage() {
                 onChange={handleChange}
                 required
               >
-                <option value="TRY" className="bg-[#2a2a2a]">TRY (₺)</option>
                 <option value="USD" className="bg-[#2a2a2a]">USD ($)</option>
                 <option value="EUR" className="bg-[#2a2a2a]">EUR (€)</option>
+                <option value="TRY" className="bg-[#2a2a2a]">TRY (₺)</option>
               </select>
               <div className="pointer-events-none absolute right-3 top-[38px] flex items-center text-gray-400">
                 <span className="material-symbols-outlined text-xl">expand_more</span>
@@ -202,10 +275,18 @@ export default function RegisterPage() {
             </div>
 
             <button
-              className="mt-2 flex h-12 w-full items-center justify-center rounded-lg bg-primary text-center text-sm font-bold text-black transition-all hover:brightness-110 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-[#1E1E1E]"
+              className="mt-2 flex h-12 w-full items-center justify-center rounded-lg bg-primary text-center text-sm font-bold text-black transition-all hover:brightness-110 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-[#1E1E1E] disabled:opacity-50 disabled:cursor-not-allowed"
               type="submit"
+              disabled={isLoading}
             >
-              {t('register.createAccount')}
+              {isLoading ? (
+                <div className="flex items-center gap-2">
+                  <div className="h-4 w-4 animate-spin rounded-full border-2 border-black border-t-transparent"></div>
+                  <span>Creating Account...</span>
+                </div>
+              ) : (
+                t('register.createAccount')
+              )}
             </button>
           </form>
 
