@@ -33,7 +33,7 @@ const transactionSchema = new mongoose.Schema(
     },
     transactionId: {
       type: String,
-      unique: true,
+      unique: true, 
       sparse: true,
     },
     description: {
@@ -51,7 +51,5 @@ const transactionSchema = new mongoose.Schema(
 // Index for faster queries
 transactionSchema.index({ user: 1, createdAt: -1 });
 transactionSchema.index({ type: 1, status: 1 });
-transactionSchema.index({ transactionId: 1 });
 
 module.exports = mongoose.model('Transaction', transactionSchema);
-

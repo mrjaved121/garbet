@@ -21,6 +21,18 @@ app.use('/api/auth', require('./routes/auth.routes'));
 app.use('/api/users', require('./routes/user.routes'));
 app.use('/api/transactions', require('./routes/transaction.routes'));
 app.use('/api/games', require('./routes/game.routes'));
+app.use('/api/payment', require('./routes/payment.routes'));
+app.use('/api/matches', require('./routes/match.routes'));
+app.use('/api/bonus', require('./routes/bonus.routes'));
+app.use('/api/support', require('./routes/support.routes'));
+app.use('/api/reports', require('./routes/report.routes'));
+app.use('/api/user/kyc', require('./routes/kyc.routes'));
+app.use('/api/settings', require('./routes/settings.routes'));
+app.use('/api/games/provider', require('./routes/gameProvider.routes'));
+app.use('/api/admin', require('./routes/admin.routes'));
+
+// Serve uploaded files
+app.use('/uploads', express.static('uploads'));
 
 // Health check route
 app.get('/api/health', (req, res) => {

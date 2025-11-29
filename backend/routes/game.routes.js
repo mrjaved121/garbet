@@ -6,7 +6,7 @@ const {
   getGames,
   getGame,
 } = require('../controllers/game.controller');
-const { protect } = require('../middleware/auth.middleware');
+const protect = require('../middleware/auth.middleware');
 
 // All routes require authentication
 router.use(protect);

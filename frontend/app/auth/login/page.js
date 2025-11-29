@@ -3,78 +3,17 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { useTranslation } from '@/hooks/useTranslation'
-import { useRouter } from 'next/navigation'
 
 export default function LoginPage() {
   const { t } = useTranslation()
-  const router = useRouter()
   const [showPassword, setShowPassword] = useState(false)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
 
-  const handleLogin = async (loginData) => {
-    setIsLoading(true)
-    try {
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(loginData),
-      })
-
-      const data = await response.json()
-
-      if (response.ok) {
-        // Login successful - store token and redirect
-        localStorage.setItem('token', data.token)
-        localStorage.setItem('user', JSON.stringify({
-          _id: data._id,
-          name: data.name,
-          email: data.email
-        }))
-        alert('Login successful!')
-        router.push('/dashboard')
-      } else {
-        // Login failed
-        alert(data.message || 'Login failed. Please try again.')
-      }
-    } catch (error) {
-      console.error('Login error:', error)
-      alert('Network error. Please check your connection and try again.')
-    } finally {
-      setIsLoading(false)
-    }
-  }
-
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
-    
-    // Validation
-    if (!email.trim()) {
-      alert('Please enter your email')
-      return
-    }
-    
-    if (!password) {
-      alert('Please enter your password')
-      return
-    }
-    
-    // Email validation matching backend regex
-    const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-    if (!emailRegex.test(email)) {
-      alert('Please enter a valid email')
-      return
-    }
-    
-    const loginData = {
-      email: email.toLowerCase().trim(),
-      password: password
-    }
-    
-    await handleLogin(loginData)
+    // Handle login logic here
+    console.log('Login attempt:', { email, password })
   }
 
   return (
@@ -151,18 +90,10 @@ export default function LoginPage() {
               </div>
 
               <button
-                className="mt-2 flex h-12 w-full items-center justify-center rounded-lg bg-primary text-center text-sm font-bold text-black transition-all hover:brightness-110 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-[#1E1E1E] disabled:opacity-50 disabled:cursor-not-allowed"
+                className="mt-2 flex h-12 w-full items-center justify-center rounded-lg bg-primary text-center text-sm font-bold text-black transition-all hover:brightness-110 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-[#1E1E1E]"
                 type="submit"
-                disabled={isLoading}
               >
-                {isLoading ? (
-                  <div className="flex items-center gap-2">
-                    <div className="h-4 w-4 animate-spin rounded-full border-2 border-black border-t-transparent"></div>
-                    <span>Signing In...</span>
-                  </div>
-                ) : (
-                  t('common.login')
-                )}
+                {t('common.login')}
               </button>
             </form>
 

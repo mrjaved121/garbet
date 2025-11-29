@@ -84,42 +84,26 @@ export default function DashboardPage() {
             </div>
           </div>
           <nav className="flex flex-col gap-2">
-            {menuItems.map((item) => {
-              const getHref = (id) => {
-                switch(id) {
-                  case 'overview': return '/dashboard'
-                  case 'deposit': return '/deposit'
-                  case 'withdraw': return '/withdraw'
-                  case 'bet-history': return '/dashboard/bet-history'
-                  case 'game-history': return '/dashboard/game-history'
-                  case 'bonuses': return '/dashboard/bonuses'
-                  case 'messages': return '/dashboard/messages'
-                  case 'settings': return '/settings'
-                  default: return '/dashboard'
-                }
-              }
-              
-              return (
-                <Link
-                  key={item.id}
-                  href={getHref(item.id)}
-                  onClick={() => setActiveMenu(item.label)}
-                  className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors ${
-                    activeMenu === item.label
-                      ? 'bg-surface text-primary'
-                      : 'hover:bg-surface/50'
-                  }`}
+            {menuItems.map((item) => (
+              <a
+                key={item.id}
+                onClick={() => setActiveMenu(item.label)}
+                className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors ${
+                  activeMenu === item.label
+                    ? 'bg-surface text-primary'
+                    : 'hover:bg-surface/50'
+                }`}
+                href="#"
+              >
+                <span
+                  className={`material-symbols-outlined ${activeMenu === item.label ? 'text-blue' : ''}`}
+                  style={activeMenu === item.label ? { fontVariationSettings: "'FILL' 1" } : {}}
                 >
-                  <span
-                    className={`material-symbols-outlined ${activeMenu === item.label ? 'text-blue' : ''}`}
-                    style={activeMenu === item.label ? { fontVariationSettings: "'FILL' 1" } : {}}
-                  >
-                    {item.icon}
-                  </span>
-                  <p className="text-white text-sm font-medium leading-normal">{item.label}</p>
-                </Link>
-              )
-            })}
+                  {item.icon}
+                </span>
+                <p className="text-white text-sm font-medium leading-normal">{item.label}</p>
+              </a>
+            ))}
           </nav>
         </div>
       </aside>

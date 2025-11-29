@@ -6,7 +6,7 @@ const {
   getTransactions,
   getTransaction,
 } = require('../controllers/transaction.controller');
-const { protect } = require('../middleware/auth.middleware');
+const protect = require('../middleware/auth.middleware');
 
 // All routes require authentication
 router.use(protect);
